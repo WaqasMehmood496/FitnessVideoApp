@@ -25,10 +25,13 @@ class favouriteViewController: UIViewController,UICollectionViewDelegate,UIColle
     let basic = ["aa1","aa2","aa3","aa4"]
     let intermediate = ["aa5"]
     let advance = ["aa6","aa7","aa8","aa9","aa10"]
+    private let spacingIphone:CGFloat = 15.0
+    private let spacingIpad:CGFloat = 30.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        self.collectionViewSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,10 +111,28 @@ extension favouriteViewController{
         }
     }
     
+    // Setup Collection View
+    func collectionViewSetup() {
+        
+        let layout = UICollectionViewFlowLayout()
+        if UIDevice.current.userInterfaceIdiom == .phone{
+            layout.sectionInset = UIEdgeInsets(top: spacingIphone, left: spacingIphone, bottom: spacingIphone, right: spacingIphone)
+            layout.minimumLineSpacing = spacingIphone
+            layout.minimumInteritemSpacing = spacingIphone
+        }
+        else{
+            layout.sectionInset = UIEdgeInsets(top: spacingIpad, left: spacingIpad, bottom: spacingIpad, right: spacingIpad)
+            layout.minimumLineSpacing = spacingIpad
+            layout.minimumInteritemSpacing = spacingIpad
+        }
+        
+        self.favCollection?.collectionViewLayout = layout
+    }
+    
 }
 
 //MARK:- UICOLLECTION VIEW DELEGATES AND DATASOURCE
-extension favouriteViewController{
+extension favouriteViewController:UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.favoritesArray.count
     }
@@ -126,6 +147,34 @@ extension favouriteViewController{
         cell.fav_btn.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
         cell.fav_btn.addTarget(self, action: #selector(favoriteBtnAction(_:)), for: .touchUpInside)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let numberOfItemsPerRow:CGFloat = 2
+        let spacingBetweenCellsIphone:CGFloat = 15
+        let spacingBetweenCellsIpad:CGFloat = 30
+        
+        if UIDevice.current.userInterfaceIdiom == .phone{
+            let totalSpacing = (2 * self.spacingIphone) + ((numberOfItemsPerRow - 1) * spacingBetweenCellsIphone) //Amount of total spacing in a row
+            
+            if let collection = self.favCollection{
+                let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
+                return CGSize(width: width , height: width + spacingBetweenCellsIphone * 2)
+            }else{
+                return CGSize(width: 0, height: 0)
+            }
+        }
+        else{
+            let totalSpacing = (2 * self.spacingIpad) + ((numberOfItemsPerRow - 1) * spacingBetweenCellsIpad) //Amount of total spacing in a row
+            
+            if let collection = self.favCollection{
+                let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
+                return CGSize(width: width , height: width + spacingBetweenCellsIpad * 2)
+            }else{
+                return CGSize(width: 0, height: 0)
+            }
+        }
     }
     
     @objc func playBtnAction(_ sender: UIButton) {

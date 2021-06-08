@@ -93,12 +93,12 @@ class MyCustomView: UIView {
         
         let invoiceImg = UIImageView()
         invoiceImg.frame = CGRect(x: imageXPos  - imageWidth - 4, y: jobBtn.frame.maxY + 8, width: imageWidth, height: imageWidth)
-        invoiceImg.image = UIImage(named: "20")
+        invoiceImg.image = UIImage(named: "Contact Support")
         invoiceImg.contentMode = .scaleAspectFit
         
         let taskImg = UIImageView()
         taskImg.frame = CGRect(x: imageXPos  - imageWidth - 4, y: invoiceBtn.frame.maxY + 8, width: imageWidth, height: imageWidth)
-        taskImg.image = UIImage(named: "20")
+        taskImg.image = UIImage(named: "FeedBack")
         taskImg.contentMode = .scaleAspectFit
         
         self.addSubview(clientImg)

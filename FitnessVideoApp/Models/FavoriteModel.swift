@@ -23,7 +23,7 @@ class FavoriteModel: Codable {
     }
     
     init?(dic:NSDictionary) {
-        let id = (dic as AnyObject).value(forKey: Constant.id) as! String
+        let id = (dic as AnyObject).value(forKey: Constant.id) as? String
         let name = (dic as AnyObject).value(forKey: Constant.name) as! String
         let title = (dic as AnyObject).value(forKey: Constant.title) as! String
         let url = (dic as AnyObject).value(forKey: Constant.url) as? String
