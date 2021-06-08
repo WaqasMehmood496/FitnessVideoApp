@@ -21,7 +21,7 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
     
     //MARK: VARIABLE'S
     var videos = [VideoTypeModel]()
-    var favoriteVideos = [FavoriteModel]()
+    var favoriteVideos: [FavoriteModel] = []
     var mAuthFirebase = Auth.auth()
     var ref: DatabaseReference!
     var thumbnail = 0
@@ -36,7 +36,7 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
         super.viewDidLoad()
         ref = Database.database().reference()
         self.getFavoritesFromFirebase()
-        self.playVideo()
+        //self.playVideo()
     }
 }
 
@@ -46,9 +46,10 @@ extension intermVideoViewController{
     // Play selected Video
     func playVideo() {
         if isFavorite{
+            print(self.favoriteVideos.count)
             player(url: self.favoriteVideos[selectedVideo.row].url)
             self.VideoTitle.text = self.favoriteVideos[selectedVideo.row].title
-            self.CreatedTime.text = "2 hours"
+                self.CreatedTime.text = "2 hours"
         }else{
             player(url:  self.videos[selectedVideo.row].urls)
             self.VideoTitle.text = self.videos[selectedVideo.row].title
@@ -107,6 +108,7 @@ extension intermVideoViewController{
                             }
                         }
                     }// End For loop
+                    self.playVideo()
                     hud.dismiss()
                 }// End Snapshot if else statement
                 self.interVideoCollectionView.reloadData()
@@ -187,6 +189,19 @@ extension intermVideoViewController{
         }
     }
     
+    // DELETE FAVORITES FROM FIREBASE DATABASE
+    func removeFavoriteFromFavorites(video:FavoriteModel) {
+        if let user = mAuthFirebase.currentUser?.uid{
+            self.ref.child("Favorite").child(user).child(video.id).removeValue { (error, _ in) in
+                if error == nil{
+                    self.getFavoritesFromFirebase()
+                }else{
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+    }
+    
     // THIS METHOD WILL INSERT SELECTED VIDEO INTO FAVORITE TABLE OF FIREBASE DATABASE
     func addIntoFavorite(name:String,title:String,url:String){
         guard let user = mAuthFirebase.currentUser?.uid else {
@@ -218,6 +233,8 @@ extension intermVideoViewController {
             let image = self.checkType(video: self.favoriteVideos[indexPath.row])
             cell.mainImage.image = UIImage(named: image)
             cell.mainLBL.text = self.favoriteVideos[indexPath.row].title
+            cell.favBtn.addTarget(self, action: #selector(favoriteBtnAction(_:)), for: .touchUpInside)
+            cell.favBtn.tag = indexPath.row
             
         }else{
             if selectedType == 0{
@@ -267,7 +284,8 @@ extension intermVideoViewController {
     
     @objc func favoriteBtnAction(_ sender: UIButton) {
         if isFavorite{
-            
+            self.removeFavoriteFromFavorites(video: self.favoriteVideos[sender.tag])
+            self.getFavoritesFromFirebase()
         }else{
             // RELOAD ALL FAVORITES FROM FIREBASE
             self.refreshFavorite { (isRefresh) in

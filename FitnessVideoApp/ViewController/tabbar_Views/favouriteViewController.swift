@@ -37,9 +37,6 @@ class favouriteViewController: UIViewController,UICollectionViewDelegate,UIColle
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PlayerVC" {
             if let playerVC = segue.destination as? intermVideoViewController {
-                playerVC.favoriteVideos = self.favoritesArray
-                playerVC.thumbnail = 0
-                playerVC.selectedType = 4
                 playerVC.selectedVideo = self.selectedVideo
                 playerVC.isFavorite = true
             }
@@ -109,6 +106,7 @@ extension favouriteViewController{
             }
         }
     }
+
 }
 
 //MARK:- UICOLLECTION VIEW DELEGATES AND DATASOURCE
@@ -137,8 +135,5 @@ extension favouriteViewController{
     @objc func favoriteBtnAction(_ sender: UIButton) {
         self.removeFromFavorites(video: self.favoritesArray[sender.tag])
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
+
 }
