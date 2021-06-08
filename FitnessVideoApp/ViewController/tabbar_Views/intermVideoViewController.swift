@@ -36,27 +36,26 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
         super.viewDidLoad()
         ref = Database.database().reference()
         self.getFavoritesFromFirebase()
-        //self.playVideo()
     }
 }
 
 
 // MARK:- FUNCTION'S EXTENSION
 extension intermVideoViewController{
-    // Play selected Video
+    // PLAY FIRST VIDEO OF ARRAY
     func playVideo() {
         if isFavorite{
             print(self.favoriteVideos.count)
             player(url: self.favoriteVideos[selectedVideo.row].url)
             self.VideoTitle.text = self.favoriteVideos[selectedVideo.row].title
-                self.CreatedTime.text = "2 hours"
+            self.CreatedTime.text = "2 hours"
         }else{
             player(url:  self.videos[selectedVideo.row].urls)
             self.VideoTitle.text = self.videos[selectedVideo.row].title
             self.CreatedTime.text = "2 hours"
         }
     }
-    
+    //VIDEO PLAYER METHOD
     func player(url:String) {
         if let url = URL.init(string: url) {
             let item = VersaPlayerItem(url: url)
@@ -66,14 +65,14 @@ extension intermVideoViewController{
             PlayerView.set(item: item)
         }
     }
-    
+    // REMOVE VIDEO FROM CURRENT PLAYER
     func removePlayer(url:String) {
         if let url = URL.init(string: url) {
             let item = VersaPlayerItem(url: url)
             self.PlayerView.player.replaceCurrentItem(with: item)
         }
     }
-    
+    // CHECK TYPE OF VIDEO WHICH IS EITHER BASIC , INTERMEDIATE OR ADVANCE
     func checkType(video:FavoriteModel) -> String {
         let firstChar = video.name.first
         let strArray = video.name.components(separatedBy: " ")
@@ -87,7 +86,7 @@ extension intermVideoViewController{
         }
     }
     
-    // Get All Favorites Videos
+    // GET ALL FAVORITES FROM FIREBASE DATABASE
     func getFavoritesFromFirebase() {
         let hud = JGProgressHUD()
         hud.show(in: self.view)
@@ -120,6 +119,7 @@ extension intermVideoViewController{
         }
     }// End get favorite method
     
+    // REFRESH ALL FAVORITES FROM FIREBASE DATABASE
     func refreshFavorite(completionHandler: @escaping (Bool) -> Void) {
         let hud = JGProgressHUD()
         hud.show(in: self.view)
@@ -218,6 +218,7 @@ extension intermVideoViewController{
 
 //MARK:- UICOLLECTION VIEW DELEGATES AND DATASOURCE
 extension intermVideoViewController {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFavorite{
             return favoriteVideos.count

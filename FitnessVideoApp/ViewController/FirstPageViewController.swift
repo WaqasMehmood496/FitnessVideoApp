@@ -22,7 +22,6 @@ class FirstPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //configureExpandingMenuButton()
         Login_Btn.layer.cornerRadius =  Login_Btn.bounds.size.height/2
         DC_btn.layer.cornerRadius = DC_btn.bounds.size.height/2
         Create_Btn.layer.cornerRadius = Create_Btn.bounds.size.height/2

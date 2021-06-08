@@ -18,13 +18,7 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.layer.cornerRadius =  mainView.bounds.size.height/10
-        
         emailView.layer.cornerRadius = emailView.bounds.size.height/2
-        
         resetBtn.layer.cornerRadius = resetBtn.bounds.size.height/2
-  
     }
-    
-
-
 }

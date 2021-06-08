@@ -64,14 +64,15 @@ class homeViewController: UIViewController,UICollectionViewDelegate,UICollection
 
 //MARK:- FUNCTIONS EXTENSION
 extension homeViewController{
-    // Getting all video from server
+    
+    // GETT ALL VIDEOS FROM SERVER
     func VideosApiCall() {
         self.dataDic = [String:Any]()
         let hud = JGProgressHUD()
         self.getLoginWebservice(.myvideoslist, hud: hud)
     }
     
-    // Get All Favorites Videos
+    // GET ALL FAVORITES VIDEOS FROM FIREBASE DATABASE
     func getFavoritesFromFirebase() {
         let hud = JGProgressHUD()
         hud.show(in: self.view)
@@ -152,7 +153,7 @@ extension homeViewController{
         }
         return false
     }
-    
+    // THIS METHOD WILL REMOVE FAVORITE VIDEO FROM FIREBASE DATABASE
     func removeFromFavorites(video:VideoTypeModel, completionHandler: @escaping (Bool) -> Void) {
         var userId = String()
         for i in self.favoritesArray{
@@ -174,7 +175,7 @@ extension homeViewController{
         }
     }
     
-    
+    // THIS METHOD WILL SAVE OR ADD NEW VIDEO IN FIREBASE FAVORITE DATABASE
     func addIntoFavorite(name:String,title:String,url:String){
         guard let user = mAuthFirebase.currentUser?.uid else {
             return
@@ -184,8 +185,7 @@ extension homeViewController{
             "title":title,
             "url":url
         ])
-    }
-
+    }// End Add in to favorites method
 }
 
 //MARK:- UICOLLECTION VIEW
@@ -293,8 +293,6 @@ extension homeViewController{
     }
     
     
-    
-    
     //MARK: Favorite Btn Action
     @objc func favouritesInterediateBtn( _ sender:UIButton){
         // RELOAD ALL FAVORITES FROM FIREBASE
@@ -349,23 +347,21 @@ extension homeViewController{
         }
     }
     
-    // Play Btn Action
+    //MARK: Play Btn Action
     @objc func playBasicBtn( _ sender:UIButton){
-        //        if collectionView == self.basicCollectionView{
-        //            self.selectedType = 0
-        //        }else if collectionView == self.interCV {
-        //            self.selectedType = 1
-        //        }else{
-        //            self.selectedType = 2
-        //        }
-        //        self.selectedVideo = indexPath
-        //        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
+        self.selectedType = 0
+        self.selectedVideo = IndexPath(row: sender.tag, section: 0)
+        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
     }
     @objc func playIntermediateBtn( _ sender:UIButton){
-        
+        self.selectedType = 1
+        self.selectedVideo = IndexPath(row: sender.tag, section: 0)
+        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
     }
     @objc func playAdvanceBtn( _ sender:UIButton){
-        
+        self.selectedType = 2
+        self.selectedVideo = IndexPath(row: sender.tag, section: 0)
+        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
     }
 }
 

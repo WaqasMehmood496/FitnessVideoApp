@@ -39,7 +39,6 @@ class FeedbackViewController: UIViewController {
         let hud = JGProgressHUD()
         self.contactSupportWebservice(.contact_with_admin, hud: hud)
     }
-    
 }
 
 
@@ -55,7 +54,6 @@ extension FeedbackViewController:WebServiceResponseDelegate{
         if let data = dataDict as? Dictionary<String, Any>{
             print(data)
             PopupHelper.alertWithOk(title: "Success", message: "Your request successfully completed", controler: self)
-            
             hud.dismiss(animated: true)
         }else{
             hud.textLabel.text = "Data Not Found"

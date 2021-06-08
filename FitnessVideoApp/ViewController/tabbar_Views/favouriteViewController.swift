@@ -30,6 +30,7 @@ class favouriteViewController: UIViewController,UICollectionViewDelegate,UIColle
         super.viewDidLoad()
         ref = Database.database().reference()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.getFavoritesFromFirebase()
     }
@@ -106,7 +107,7 @@ extension favouriteViewController{
             }
         }
     }
-
+    
 }
 
 //MARK:- UICOLLECTION VIEW DELEGATES AND DATASOURCE
@@ -135,5 +136,5 @@ extension favouriteViewController{
     @objc func favoriteBtnAction(_ sender: UIButton) {
         self.removeFromFavorites(video: self.favoritesArray[sender.tag])
     }
-
+    
 }
