@@ -49,13 +49,13 @@ class favouriteViewController: UIViewController,UICollectionViewDelegate,UIColle
 
 //MARK:- FUNCTION'S EXTENSION
 extension favouriteViewController{
-    // Get All Favorites Videos
+    // GET ALL FAVORITES VIDEOS DATA FROM FIREBASE DATABASE
     func getFavoritesFromFirebase() {
         self.favoritesArray.removeAll()
         let hud = JGProgressHUD()
         hud.show(in: self.view)
         if let userID = self.mAuthFirebase.currentUser?.uid{
-            ref.child("Favorite").child(userID).observe(.value) { (snapshot) in
+            ref.child("Favorite").child(userID).observeSingleEvent(of: .value) { (snapshot) in
                 print(snapshot)
                 if(snapshot.exists()) {
                     let array:NSArray = snapshot.children.allObjects as NSArray
@@ -73,7 +73,9 @@ extension favouriteViewController{
                     self.favCollection.reloadData()
                     hud.dismiss()
                 }// End Snapshot if else statement
-                hud.dismiss()
+                else{
+                    hud.dismiss()
+                }
             }// End ref Child Completion Block
             hud.dismiss()
         }// End Firebase user id
@@ -94,6 +96,19 @@ extension favouriteViewController{
             return self.advance[lstValue]
         }
     }
+    
+    // DELETE FAVORITES FROM FIREBASE DATABASE
+    func removeFromFavorites(video:FavoriteModel) {
+        if let user = mAuthFirebase.currentUser?.uid{
+            self.ref.child("Favorite").child(user).child(video.id).removeValue { (error, _ in) in
+                if error == nil{
+                    self.getFavoritesFromFirebase()
+                }else{
+                    print(error!.localizedDescription)
+                }
+            }
+        }
+    }
 }
 
 //MARK:- UICOLLECTION VIEW DELEGATES AND DATASOURCE
@@ -109,20 +124,21 @@ extension favouriteViewController{
         cell.nameLBL.text = self.favoritesArray[indexPath.row].name
         cell.titleLBL.text = self.favoritesArray[indexPath.row].title
         cell.playBtn.addTarget(self, action: #selector(playBtnAction(_:)), for: .touchUpInside)
+        cell.fav_btn.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
         cell.fav_btn.addTarget(self, action: #selector(favoriteBtnAction(_:)), for: .touchUpInside)
         return cell
     }
     
     @objc func playBtnAction(_ sender: UIButton) {
-        
+        self.selectedVideo = IndexPath(row: sender.tag, section: 0)
+        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
     }
     
     @objc func favoriteBtnAction(_ sender: UIButton) {
-        
+        self.removeFromFavorites(video: self.favoritesArray[sender.tag])
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedVideo = indexPath
-        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
+        
     }
 }

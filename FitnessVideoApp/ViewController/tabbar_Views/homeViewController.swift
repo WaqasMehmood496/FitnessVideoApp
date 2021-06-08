@@ -75,8 +75,9 @@ extension homeViewController{
     func getFavoritesFromFirebase() {
         let hud = JGProgressHUD()
         hud.show(in: self.view)
+        self.favoritesArray.removeAll()
         if let userID = self.mAuthFirebase.currentUser?.uid{
-            ref.child("Favorite").child(userID).observe(.value) { (snapshot) in
+            ref.child("Favorite").child(userID).observeSingleEvent(of: .value) { (snapshot) in
                 print(snapshot)
                 if(snapshot.exists()) {
                     let array:NSArray = snapshot.children.allObjects as NSArray
@@ -92,12 +93,6 @@ extension homeViewController{
                         }
                     }// End For loop
                     hud.dismiss()
-                    DispatchQueue.main.async {
-                        self.basicCollectionView.reloadData()
-                        self.interCV.reloadData()
-                        self.adv_CollectionView.reloadData()
-                    }
-                    
                 }// End Snapshot if else statement
                 self.basicCollectionView.reloadData()
                 self.interCV.reloadData()
@@ -115,8 +110,9 @@ extension homeViewController{
     func refreshFavorite(completionHandler: @escaping (Bool) -> Void) {
         let hud = JGProgressHUD()
         hud.show(in: self.view)
+        self.favoritesArray.removeAll()
         if let userID = self.mAuthFirebase.currentUser?.uid{
-            ref.child("Favorite").child(userID).observe(.value) { (snapshot) in
+            ref.child("Favorite").child(userID).observeSingleEvent(of: .value) { (snapshot) in
                 print(snapshot)
                 if(snapshot.exists()) {
                     let array:NSArray = snapshot.children.allObjects as NSArray
@@ -134,34 +130,48 @@ extension homeViewController{
                     completionHandler(true)
                     hud.dismiss()
                 }// End Snapshot if else statement
-                completionHandler(false)
-                hud.dismiss()
+                else{
+                    completionHandler(true)
+                    hud.dismiss()
+                }
             }// End ref Child Completion Block
-            completionHandler(false)
         }// End Firebase user id
         else{
             hud.dismiss()
+            completionHandler(false)
         }
-        completionHandler(false)
+        
     }// End get favorite method
     
+    // THIS METHOD CHECK THAT GIVEN VIDEO IS FAVORITE OR NOT , IF IT IS FAVORITE THEN RETURN TRUE ELSE RETURN FALSE
     func checkIsFavorite(video:VideoTypeModel) -> Bool {
         for i in self.favoritesArray{
             if i.title == video.title{
-                
                 return true
             }
         }
         return false
     }
     
-    func returnFavoriteVideoId(video:VideoTypeModel) -> String? {
+    func removeFromFavorites(video:VideoTypeModel, completionHandler: @escaping (Bool) -> Void) {
+        var userId = String()
         for i in self.favoritesArray{
             if i.title == video.title{
-                return i.id
+                userId = i.id
             }
         }
-        return nil
+        
+        if let user = mAuthFirebase.currentUser?.uid{
+            self.ref.child("Favorite").child(user).child(userId).removeValue { (error, _ in) in
+                if error == nil{
+                    completionHandler(true)
+                }else{
+                    print(error!.localizedDescription)
+                }
+            }
+        }else{
+            completionHandler(false)
+        }
     }
     
     
@@ -175,17 +185,7 @@ extension homeViewController{
             "url":url
         ])
     }
-    
-    func deleteFavorite(id:String) {
-        guard let user = mAuthFirebase.currentUser?.uid else {
-            return
-        }
-        print(user)
-        self.ref.child("Favorite").child(user).child(id).removeValue { (error, _ in) in
-            print(error)
-        }
-    }
-    
+
 }
 
 //MARK:- UICOLLECTION VIEW
@@ -216,11 +216,9 @@ extension homeViewController{
                 cell.mainImage.image = UIImage(named: self.basic[indexPath.row])
             }
             if checkIsFavorite(video: self.videos.basic[indexPath.row]){
-                //self.videos.basic[indexPath.row].isFavorite = true
                 cell.favouritesBtn.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
             }else{
-                self.videos.basic[indexPath.row].isFavorite = false
-                //cell.favouritesBtn.setImage(#imageLiteral(resourceName: "4"), for: .normal)
+                cell.favouritesBtn.setImage(#imageLiteral(resourceName: "4"), for: .normal)
             }
             
             cell.favouritesBtn.addTarget(self, action: #selector(favouritesBasicBtn(_:)), for: .touchUpInside)
@@ -237,11 +235,9 @@ extension homeViewController{
                 cell.mainImage.image = UIImage(named: self.intermediate[indexPath.row])
             }
             if checkIsFavorite(video: self.videos.intermediate[indexPath.row]){
-               // self.videos.intermediate[indexPath.row].isFavorite = false
                 cell.favBtn.setImage(#imageLiteral(resourceName: "4"), for: .normal)
             }else{
                 self.videos.intermediate[indexPath.row].isFavorite = true
-                //cell.favBtn.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
             }
             cell.favBtn.addTarget(self, action: #selector(favouritesInterediateBtn(_:)), for: .touchUpInside)
             cell.favBtn.tag = indexPath.row
@@ -257,10 +253,8 @@ extension homeViewController{
                 cell.mainImage.image = UIImage(named: self.advance[indexPath.row])
             }
             if checkIsFavorite(video: self.videos.advance[indexPath.row]){
-                //self.videos.advance[indexPath.row].isFavorite = true
                 cell.favBtn.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
             }else{
-                //self.videos.advance[indexPath.row].isFavorite = false
                 cell.favBtn.setImage(#imageLiteral(resourceName: "4"), for: .normal)
             }
             cell.favBtn.addTarget(self, action: #selector(favouritesAdvanceBtn(_:)), for: .touchUpInside)
@@ -270,36 +264,31 @@ extension homeViewController{
             return cell
         }
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//       
-//    }
-    
-    
-    
     
     //MARK: Favorite Btn Action
     @objc func favouritesBasicBtn( _ sender:UIButton){
-        if self.videos.basic[sender.tag].isFavorite{
-            //TAGS: DELETE FORM FAVORITE
-            // change btn image
-            sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
-            // change basic video favorite status
-            self.videos.basic[sender.tag].isFavorite = false
-            // get all favorite from firebase
-            self.refreshFavorite { (isUpdated) in
-                if isUpdated == true{
-                    if let id = self.returnFavoriteVideoId(video: self.videos.basic[sender.tag]){
-                        print(id)
-                        self.deleteFavorite(id: id)
-                        
+        // RELOAD ALL FAVORITES FROM FIREBASE
+        self.refreshFavorite { (isRefresh) in
+            if isRefresh == true{
+                // CHECK IS EXIST IN FAVORITE
+                if self.checkIsFavorite(video: self.videos.basic[sender.tag]){
+                    // IF IT IS, THEN REMOVE FROM FAVORITE AND CHANGE IMAGE AS EMPTY HEART
+                    self.removeFromFavorites(video: self.videos.basic[sender.tag]) { (isRemoved) in
+                        if isRemoved{
+                            sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
+                        }else{
+                            sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
+                        }
                     }
+                }else{
+                    // ELSE ADD INTO FAVORITE AND CHANGE IMAGE AS FILL HEART
+                    self.addIntoFavorite(name: "Basic \(sender.tag)", title: self.videos.basic[sender.tag].title, url: self.videos.basic[sender.tag].urls)
+                    sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
                 }
+            }else{
+                // SHOW ALERT
+                PopupHelper.alertWithOk(title: "Fail", message: "Unknown error found", controler: self)
             }
-        }else{
-            // ADD INTO FAVORITE
-            sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
-            self.videos.basic[sender.tag].isFavorite = true
-            self.addIntoFavorite(name: "Basic \(sender.tag)", title: self.videos.basic[sender.tag].title, url: self.videos.basic[sender.tag].urls)
         }
     }
     
@@ -308,81 +297,69 @@ extension homeViewController{
     
     //MARK: Favorite Btn Action
     @objc func favouritesInterediateBtn( _ sender:UIButton){
-        if self.videos.intermediate[sender.tag].isFavorite{
-//            // DELETE FORM FAVORITE
-//            sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
-//            self.videos.intermediate[sender.tag].isFavorite = false
-//            if let id = returnFavoriteVideoId(video: self.videos.intermediate[sender.tag]){
-//                self.deleteFavorite(id: id)
-//            }
-            
-            //TAGS: DELETE FORM FAVORITE
-            // change btn image
-            sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
-            // change basic video favorite status
-            self.videos.intermediate[sender.tag].isFavorite = false
-            // get all favorite from firebase
-            self.refreshFavorite { (isUpdated) in
-                if isUpdated{
-                    if let id = self.returnFavoriteVideoId(video: self.videos.intermediate[sender.tag]){
-                        print(id)
-                        self.deleteFavorite(id: id)
+        // RELOAD ALL FAVORITES FROM FIREBASE
+        self.refreshFavorite { (isRefresh) in
+            if isRefresh == true{
+                // CHECK IS EXIST IN FAVORITE
+                if self.checkIsFavorite(video: self.videos.intermediate[sender.tag]){
+                    // IF IT IS, THEN REMOVE FROM FAVORITE AND CHANGE IMAGE AS EMPTY HEART
+                    self.removeFromFavorites(video: self.videos.intermediate[sender.tag]) { (isRemoved) in
+                        if isRemoved{
+                            sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
+                        }else{
+                            sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
+                        }
                     }
+                }else{
+                    // ELSE ADD INTO FAVORITE AND CHANGE IMAGE AS FILL HEART
+                    self.addIntoFavorite(name: "Basic \(sender.tag)", title: self.videos.intermediate[sender.tag].title, url: self.videos.intermediate[sender.tag].urls)
+                    sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
                 }
+            }else{
+                // SHOW ALERT
+                PopupHelper.alertWithOk(title: "Fail", message: "Unknown error found", controler: self)
             }
-        }else{
-            // ADD INTO FAVORITE
-            sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
-            self.videos.intermediate[sender.tag].isFavorite = true
-            self.addIntoFavorite(name: "Intermediate \(sender.tag)", title: self.videos.intermediate[sender.tag].title, url: self.videos.intermediate[sender.tag].urls)
         }
     }
     
     //MARK: Favorite Btn Action
     @objc func favouritesAdvanceBtn( _ sender:UIButton){
-        if self.videos.advance[sender.tag].isFavorite{
-//            // DELETE FORM FAVORITE
-//            sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
-//            self.videos.advance[sender.tag].isFavorite = false
-//            if let id = returnFavoriteVideoId(video: self.videos.advance[sender.tag]){
-//                self.deleteFavorite(id: id)
-//            }
-            
-            //TAGS: DELETE FORM FAVORITE
-            // change btn image
-            //sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
-            self.basicCollectionView.reloadData()
-            // change basic video favorite status
-            self.videos.advance[sender.tag].isFavorite = false
-            // get all favorite from firebase
-            self.refreshFavorite { (isUpdated) in
-                if isUpdated{
-                    if let id = self.returnFavoriteVideoId(video: self.videos.advance[sender.tag]){
-                        print(id)
-                        self.deleteFavorite(id: id)
+        // RELOAD ALL FAVORITES FROM FIREBASE
+        self.refreshFavorite { (isRefresh) in
+            if isRefresh == true{
+                // CHECK IS EXIST IN FAVORITE
+                if self.checkIsFavorite(video: self.videos.advance[sender.tag]){
+                    // IF IT IS, THEN REMOVE FROM FAVORITE AND CHANGE IMAGE AS EMPTY HEART
+                    self.removeFromFavorites(video: self.videos.advance[sender.tag]) { (isRemoved) in
+                        if isRemoved{
+                            sender.setImage(#imageLiteral(resourceName: "4"), for: .normal)
+                        }else{
+                            sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
+                        }
                     }
+                }else{
+                    // ELSE ADD INTO FAVORITE AND CHANGE IMAGE AS FILL HEART
+                    self.addIntoFavorite(name: "Basic \(sender.tag)", title: self.videos.advance[sender.tag].title, url: self.videos.advance[sender.tag].urls)
+                    sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
                 }
+            }else{
+                // SHOW ALERT
+                PopupHelper.alertWithOk(title: "Fail", message: "Unknown error found", controler: self)
             }
-        }else{
-            // ADD INTO FAVORITE
-            //sender.setImage(#imageLiteral(resourceName: "Fill_Heart"), for: .normal)
-            self.basicCollectionView.reloadData()
-            self.videos.advance[sender.tag].isFavorite = true
-            self.addIntoFavorite(name: "Advance \(sender.tag)", title: self.videos.advance[sender.tag].title, url: self.videos.advance[sender.tag].urls)
         }
     }
     
     // Play Btn Action
     @objc func playBasicBtn( _ sender:UIButton){
-//        if collectionView == self.basicCollectionView{
-//            self.selectedType = 0
-//        }else if collectionView == self.interCV {
-//            self.selectedType = 1
-//        }else{
-//            self.selectedType = 2
-//        }
-//        self.selectedVideo = indexPath
-//        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
+        //        if collectionView == self.basicCollectionView{
+        //            self.selectedType = 0
+        //        }else if collectionView == self.interCV {
+        //            self.selectedType = 1
+        //        }else{
+        //            self.selectedType = 2
+        //        }
+        //        self.selectedVideo = indexPath
+        //        self.performSegue(withIdentifier: "PlayerVC", sender: nil)
     }
     @objc func playIntermediateBtn( _ sender:UIButton){
         
@@ -416,6 +393,9 @@ extension homeViewController:WebServiceResponseDelegate{
                 }
             }
             self.firstLoad = true
+            self.basicCollectionView.reloadData()
+            self.interCV.reloadData()
+            self.adv_CollectionView.reloadData()
             self.getFavoritesFromFirebase()
             hud.dismiss(animated: true)
         }else{
