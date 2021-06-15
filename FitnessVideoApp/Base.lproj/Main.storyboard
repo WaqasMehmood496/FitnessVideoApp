@@ -1329,7 +1329,7 @@
                     <navigationItem key="navigationItem" title="Home" id="rni-Ba-n1G">
                         <barButtonItem key="backBarButtonItem" title=" " id="udW-qk-4ME"/>
                         <barButtonItem key="leftBarButtonItem" image="22" id="wDU-MB-fmy">
-                            <inset key="imageInsets" minX="5" minY="0.0" maxX="5" maxY="5"/>
+                            <inset key="imageInsets" minX="5" minY="0.0" maxX="5" maxY="-5"/>
                             <connections>
                                 <action selector="MenuBtnAction:" destination="b8O-ql-5D9" id="nXm-KI-F8z"/>
                             </connections>
@@ -1423,8 +1423,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katherineelizebeth@info.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj5-lO-zfq">
-                                                        <rect key="frame" x="8" y="29.5" width="334" height="19.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <rect key="frame" x="8" y="29.5" width="334" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1449,8 +1449,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katherineelizebeth@info.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yO-QW-BKZ">
-                                                        <rect key="frame" x="8" y="29.5" width="334" height="19.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <rect key="frame" x="8" y="29.5" width="334" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2972,6 +2972,9 @@
                                                 </constraints>
                                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="arrow.backward" catalog="system"/>
+                                                <connections>
+                                                    <action selector="BackBtnAction:" destination="hCg-M0-qv7" eventType="touchUpInside" id="P1x-v5-vRr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -3194,24 +3197,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6Z-eE-XmG">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHP-bm-kwc" customClass="VersaPlayerView" customModule="VersaPlayer">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="227.5"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iKl-0d-fdB">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="227.5"/>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </imageView>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVR-Zk-cdm">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="iKl-0d-fdB" secondAttribute="trailing" id="HZJ-lw-3wZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="iKl-0d-fdB" secondAttribute="bottom" id="KJt-ov-jO9"/>
-                                            <constraint firstItem="iKl-0d-fdB" firstAttribute="leading" secondItem="FHP-bm-kwc" secondAttribute="leading" id="eGM-c5-Ryw"/>
-                                            <constraint firstAttribute="width" secondItem="FHP-bm-kwc" secondAttribute="height" multiplier="1:0.55" id="fC2-qm-PRD"/>
-                                            <constraint firstItem="iKl-0d-fdB" firstAttribute="top" secondItem="FHP-bm-kwc" secondAttribute="top" id="ofM-x5-pnf"/>
+                                            <constraint firstAttribute="height" priority="750" constant="300" id="03D-9T-x8g"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wc-K5-sSc">
-                                        <rect key="frame" x="0.0" y="227.5" width="414" height="497.5"/>
+                                        <rect key="frame" x="0.0" y="300" width="414" height="425"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorel ispum is sample dummy text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5K-N5-ieH">
                                                 <rect key="frame" x="16" y="16" width="382" height="19.5"/>
@@ -3232,7 +3226,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hzr-uz-j52">
-                                                <rect key="frame" x="0.0" y="114.5" width="414" height="383"/>
+                                                <rect key="frame" x="0.0" y="114.5" width="414" height="310.5"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="AHB-11-DEK">
                                                     <size key="itemSize" width="190" height="145"/>
@@ -3367,12 +3361,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="9Wc-K5-sSc" secondAttribute="trailing" id="3Pe-Ip-mZe"/>
+                                    <constraint firstAttribute="trailing" secondItem="iVR-Zk-cdm" secondAttribute="trailing" id="6eF-yD-3tC"/>
                                     <constraint firstItem="9Wc-K5-sSc" firstAttribute="leading" secondItem="y6Z-eE-XmG" secondAttribute="leading" id="FF6-gy-Iey"/>
+                                    <constraint firstItem="iVR-Zk-cdm" firstAttribute="top" secondItem="y6Z-eE-XmG" secondAttribute="top" id="Geq-2E-ojO"/>
+                                    <constraint firstItem="9Wc-K5-sSc" firstAttribute="top" secondItem="iVR-Zk-cdm" secondAttribute="bottom" id="R1g-mI-jMe"/>
                                     <constraint firstAttribute="bottom" secondItem="9Wc-K5-sSc" secondAttribute="bottom" id="Vi4-Qr-qu2"/>
-                                    <constraint firstAttribute="trailing" secondItem="FHP-bm-kwc" secondAttribute="trailing" id="W51-OX-vDP"/>
-                                    <constraint firstItem="FHP-bm-kwc" firstAttribute="top" secondItem="y6Z-eE-XmG" secondAttribute="top" id="hFg-nq-uo7"/>
-                                    <constraint firstItem="9Wc-K5-sSc" firstAttribute="top" secondItem="FHP-bm-kwc" secondAttribute="bottom" id="nex-2F-Hn1"/>
-                                    <constraint firstItem="FHP-bm-kwc" firstAttribute="leading" secondItem="y6Z-eE-XmG" secondAttribute="leading" id="xjd-ct-Hjh"/>
+                                    <constraint firstItem="iVR-Zk-cdm" firstAttribute="leading" secondItem="y6Z-eE-XmG" secondAttribute="leading" id="WA0-Es-nSQ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3389,8 +3383,8 @@
                     <connections>
                         <outlet property="CreatedTime" destination="Rt3-A7-jGc" id="ZMV-rO-dkL"/>
                         <outlet property="Description" destination="KxA-bJ-AAC" id="gnZ-GA-Vhh"/>
-                        <outlet property="PlayerView" destination="FHP-bm-kwc" id="Eao-m8-sXg"/>
                         <outlet property="VideoTitle" destination="a5K-N5-ieH" id="kms-zj-boj"/>
+                        <outlet property="containerView" destination="iVR-Zk-cdm" id="Uht-pv-S7g"/>
                         <outlet property="controls" destination="Rpq-75-yfm" id="rfd-8b-OUg"/>
                         <outlet property="interVideoCollectionView" destination="hzr-uz-j52" id="Xrx-2R-1Gg"/>
                     </connections>
@@ -4834,7 +4828,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="vJp-90-nuw"/>
+        <segue reference="ffZ-aL-Icq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1" width="750" height="1626"/>

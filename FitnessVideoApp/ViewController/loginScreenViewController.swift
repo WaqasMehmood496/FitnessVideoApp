@@ -86,7 +86,9 @@ class loginScreenViewController: UIViewController {
                             }//End auth current user id statement
                         }
                         else{
+                            self.hud.dismiss()
                             self.ErrorAlertMessage(title: "Email not verifed", description: "Kindly verify your email!")
+                            
                         }//End user_Flag statement
                     }
                     else{

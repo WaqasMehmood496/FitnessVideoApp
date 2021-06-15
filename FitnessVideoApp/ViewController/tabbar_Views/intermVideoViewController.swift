@@ -10,11 +10,14 @@ import UIKit
 import VersaPlayer
 import JGProgressHUD
 import Firebase
+import ASPVideoPlayer
+import AVFoundation
+import AVKit
 
-class intermVideoViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate, VersaPlayerPlaybackDelegate {
+class intermVideoViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate, VersaPlayerPlaybackDelegate, ASPVideoPlayerViewDelegate {
     //MARK: IBOUTLET'S
     @IBOutlet weak var interVideoCollectionView: UICollectionView!
-    @IBOutlet weak var PlayerView: VersaPlayerView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var controls: VersaPlayerControls!
     @IBOutlet weak var VideoTitle: UILabel!
     @IBOutlet weak var Description: UILabel!
@@ -34,6 +37,9 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
     var isFavorite = Bool()
     private let spacingIphone:CGFloat = 15.0
     private let spacingIpad:CGFloat = 30.0
+    var previousConstraints: [NSLayoutConstraint] = []
+    let playerViewController = AVPlayerViewController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,32 +58,49 @@ extension intermVideoViewController{
         if isFavorite{
             self.navigationItem.title = self.favoriteVideos[selectedVideo.row].title
             self.Description.text = self.favoriteVideos[selectedVideo.row].name
-            player(url: self.favoriteVideos[selectedVideo.row].url)
+            player(url: self.favoriteVideos[selectedVideo.row].url, isFavourte: true)
             self.VideoTitle.text = self.favoriteVideos[selectedVideo.row].title
             self.CreatedTime.text = "2 hours"
         }else{
             self.navigationItem.title = self.videos[selectedVideo.row].title
             self.Description.text = self.videos[selectedVideo.row].description
-            player(url:  self.videos[selectedVideo.row].urls)
+            player(url:  self.videos[selectedVideo.row].urls, isFavourte: false)
             self.VideoTitle.text = self.videos[selectedVideo.row].title
             self.CreatedTime.text = "2 hours"
         }
     }
     //VIDEO PLAYER METHOD
-    func player(url:String) {
-        if let url = URL.init(string: url) {
-            let item = VersaPlayerItem(url: url)
-            PlayerView.playbackDelegate = self
-            PlayerView.layer.backgroundColor = UIColor.black.cgColor
-            PlayerView.use(controls: controls)
-            PlayerView.set(item: item)
+    func player(url:String,isFavourte:Bool) {
+        var items = [AVPlayerItem]()
+        if isFavourte{
+            for i in favoriteVideos{
+                if let url = URL.init(string: i.url) {
+                    let videoUrl = AVPlayerItem(url: url)
+                    items.append(videoUrl)
+                }
+            }
+        }else{
+            for i in videos{
+                if let url = URL.init(string: i.urls) {
+                    let videoUrl = AVPlayerItem(url: url)
+                    items.append(videoUrl)
+                }
+            }
         }
+        //let videoURL = URL(string: url)
+        let playlist = AVQueuePlayer(items: items)
+        playlist.rate = 1
+        playerViewController.player = playlist
+        playerViewController.delegate = self
+        playerViewController.view.frame = self.containerView.frame
+        playerViewController.showsPlaybackControls = true
+        addChild(playerViewController)
+        self.containerView.addSubview(playerViewController.view)
+        playlist.play()
     }
     // REMOVE VIDEO FROM CURRENT PLAYER
     func removePlayer(url:String) {
         if let url = URL.init(string: url) {
-            let item = VersaPlayerItem(url: url)
-            self.PlayerView.player.replaceCurrentItem(with: item)
         }
     }
     // CHECK TYPE OF VIDEO WHICH IS EITHER BASIC , INTERMEDIATE OR ADVANCE
@@ -380,4 +403,9 @@ extension intermVideoViewController:UICollectionViewDelegateFlowLayout {
             }// End referesh favorites Completion handler
         }//End is favorite condition
     }// End favorite button action
+}
+
+// MARK:- AVPlayerViewController
+extension intermVideoViewController:AVPlayerViewControllerDelegate,AVAudioPlayerDelegate{
+    
 }

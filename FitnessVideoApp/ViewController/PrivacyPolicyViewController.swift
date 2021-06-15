@@ -15,4 +15,7 @@ class PrivacyPolicyViewController: UIViewController {
 
     }
 
+    @IBAction func BackBtnAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
