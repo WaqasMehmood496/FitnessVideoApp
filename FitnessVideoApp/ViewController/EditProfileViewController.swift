@@ -30,6 +30,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
         MaleBtn.isSelected = true
         ref = Database.database().reference()
     }
@@ -46,6 +47,33 @@ class EditProfileViewController: UIViewController {
     }
     @IBAction func UpdateBtnAction(_ sender: Any) {
         self.updatefields()
+    }
+    
+    
+}
+
+
+//MARK:- FUNCTION EXTENSION
+extension EditProfileViewController{
+    func setupUI() {
+        self.NameTF.setLeftPaddingPoints(8)
+        self.NameTF.setRightPaddingPoints(8)
+        
+        self.DayTF.setLeftPaddingPoints(8)
+        self.DayTF.setRightPaddingPoints(8)
+        
+        self.MonthTF.setLeftPaddingPoints(8)
+        self.MonthTF.setRightPaddingPoints(8)
+        
+        self.YearTF.setLeftPaddingPoints(8)
+        self.YearTF.setRightPaddingPoints(8)
+        
+        self.HeightTF.setLeftPaddingPoints(8)
+        self.HeightTF.setRightPaddingPoints(8)
+        
+        self.WeightTF.setLeftPaddingPoints(8)
+        self.WeightTF.setRightPaddingPoints(8)
+        
     }
     
     func updatefields(){

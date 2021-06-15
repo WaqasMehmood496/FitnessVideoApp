@@ -54,44 +54,68 @@ class loginScreenViewController: UIViewController {
             hud.textLabel.text = "Loading"
             hud.show(in: self.view)
             mAuthFirebase.signIn(withEmail: email, password: password) { user, error in
-                
-                print(user?.credential)
                 if let error = error,user == nil{
                     self.hud.dismiss()
                     print(error.localizedDescription)
                     print("SignInFailed")
                 }
                 else{
-                    if let userID = self.mAuthFirebase.currentUser?.uid{
-                        print(userID)
-                        self.ref.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
-                            print(snapshot)
-                            let value = snapshot.value as? NSDictionary
-                            let user = LoginModel(dic: value as! NSDictionary)
-                            guard let data = user else{return}
-                            CommonHelper.saveCachedUserData(data)
-                            self.hud.dismiss()
-                            self.changeVC(identifier: "Tabbar")
-                            self.hud.dismiss()
-                        }){
-                            (error) in
-                            print(error.localizedDescription)
-                            self.hud.dismiss()
+                    if let user_FLag = self.mAuthFirebase.currentUser?.isEmailVerified{
+                        if user_FLag{
+                            
+                            if let userID = self.mAuthFirebase.currentUser?.uid{
+                                print(userID)
+                                self.ref.child("Users").child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+                                    print(snapshot)
+                                    let value = snapshot.value as? NSDictionary
+                                    let user = LoginModel(dic: value as! NSDictionary)
+                                    guard let data = user else{return}
+                                    CommonHelper.saveCachedUserData(data)
+                                    self.hud.dismiss()
+                                    self.changeVC(identifier: "Tabbar")
+                                    self.hud.dismiss()
+                                }){
+                                    (error) in
+                                    print(error.localizedDescription)
+                                    self.hud.dismiss()
+                                }
+                            }
+                            else{
+                                PopupHelper.alertWithOk(title: "Login Fail", message: "User not found", controler: self)
+                                self.hud.dismiss()
+                            }//End auth current user id statement
                         }
+                        else{
+                            self.ErrorAlertMessage(title: "Email not verifed", description: "Kindly verify your email!")
+                        }//End user_Flag statement
                     }
                     else{
-                        PopupHelper.alertWithOk(title: "Login Fail", message: "User not found", controler: self)
-                        self.hud.dismiss()
-                    }
-                }
-            }
-        }
-    }
+                        return
+                    }//End isEmailVerified statement
+                }//End error nil statement
+            }//End auth signin complition
+        }//End textfields nil statement
+    }//End signin function
     
     func changeVC(identifier:String){
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: identifier)
         UIApplication.shared.windows.first?.rootViewController = viewController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
+    }
+    
+    func ErrorAlertMessage(title:String,description:String) {
+        let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                alert.dismiss(animated: true, completion: nil)
+            case .cancel:
+                print("cancel")
+            case .destructive:
+                print("destructive")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }

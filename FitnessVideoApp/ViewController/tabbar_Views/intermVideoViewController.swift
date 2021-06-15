@@ -17,6 +17,7 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
     @IBOutlet weak var PlayerView: VersaPlayerView!
     @IBOutlet weak var controls: VersaPlayerControls!
     @IBOutlet weak var VideoTitle: UILabel!
+    @IBOutlet weak var Description: UILabel!
     @IBOutlet weak var CreatedTime: UILabel!
     
     //MARK: VARIABLE'S
@@ -49,11 +50,14 @@ extension intermVideoViewController{
     // PLAY FIRST VIDEO OF ARRAY
     func playVideo() {
         if isFavorite{
-            print(self.favoriteVideos.count)
+            self.navigationItem.title = self.favoriteVideos[selectedVideo.row].title
+            self.Description.text = self.favoriteVideos[selectedVideo.row].name
             player(url: self.favoriteVideos[selectedVideo.row].url)
             self.VideoTitle.text = self.favoriteVideos[selectedVideo.row].title
             self.CreatedTime.text = "2 hours"
         }else{
+            self.navigationItem.title = self.videos[selectedVideo.row].title
+            self.Description.text = self.videos[selectedVideo.row].description
             player(url:  self.videos[selectedVideo.row].urls)
             self.VideoTitle.text = self.videos[selectedVideo.row].title
             self.CreatedTime.text = "2 hours"
@@ -285,8 +289,16 @@ extension intermVideoViewController:UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isFavorite{
+            self.navigationItem.title = self.favoriteVideos[indexPath.row].title
+            self.VideoTitle.text = self.favoriteVideos[indexPath.row].title
+            self.CreatedTime.text = "2 hours"
+            self.Description.text = self.favoriteVideos[indexPath.row].name
             self.removePlayer(url: self.favoriteVideos[indexPath.row].url)
         }else{
+            self.title = self.videos[indexPath.row].title
+            self.VideoTitle.text = self.videos[indexPath.row].title
+            self.CreatedTime.text = "2 hours"
+            self.Description.text = self.videos[indexPath.row].description
             self.removePlayer(url: self.videos[indexPath.row].urls)
         }
     }
@@ -296,7 +308,7 @@ extension intermVideoViewController:UICollectionViewDelegateFlowLayout {
         let numberOfItemsPerRow:CGFloat = 2
         let spacingBetweenCellsIphone:CGFloat = 15
         let spacingBetweenCellsIpad:CGFloat = 30
-         
+        
         if UIDevice.current.userInterfaceIdiom == .phone{
             let totalSpacing = (2 * self.spacingIphone) + ((numberOfItemsPerRow - 1) * spacingBetweenCellsIphone) //Amount of total spacing in a row
             

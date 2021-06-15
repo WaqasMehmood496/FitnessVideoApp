@@ -29,7 +29,8 @@ class homeViewController: UIViewController,UICollectionViewDelegate,UICollection
     var mAuthFirebase = Auth.auth()
     var ref: DatabaseReference!
     var favoritesArray = [FavoriteModel]()
-    
+    var customView = HomeMenuView()
+    var backView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,11 @@ class homeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 playerVC.selectedVideo = self.selectedVideo
             }
         }
+    }
+    @IBAction func MenuBtnAction(_ sender: Any) {
+        self.add_Option_View()
+        backView.tag = 1122
+        self.view.addSubview(backView)
     }
 }
 
@@ -399,5 +405,59 @@ extension homeViewController:WebServiceResponseDelegate{
             hud.indicatorView = JGProgressHUDErrorIndicatorView()
             hud.dismiss(afterDelay: 2, animated: true)
         }
+    }
+}
+
+
+//MARK:- OPTION MENU SETUP EXTENSION
+extension homeViewController{
+    func add_Option_View() {
+        
+        let xPos = CGFloat(32)
+        let yPos = CGFloat(32)
+        
+        customView = HomeMenuView(frame: CGRect(x: xPos, y: yPos, width: 150, height: self.view.frame.height/2))
+        customView.clientBtn.addTarget(self, action: #selector(client_Btn), for: .touchUpInside)
+        customView.proposalBtn.addTarget(self, action: #selector(proposal_Btn), for: .touchUpInside)
+        customView.jobBtn.addTarget(self, action: #selector(job_Btn), for: .touchUpInside)
+        customView.invoiceBtn.addTarget(self, action: #selector(invoice_Btn), for: .touchUpInside)
+        customView.taskBtn.addTarget(self, action: #selector(task_Btn), for: .touchUpInside)
+        
+        // Back Light View
+        backView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        backView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1).withAlphaComponent(0.5)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.removeViewFromSubView(_:)))
+        backView.addGestureRecognizer(tap)
+        self.backView.addSubview(customView)
+    }
+    
+    @objc func removeViewFromSubView(_ sender: UITapGestureRecognizer? = nil) {
+        for view in self.view.subviews{
+            if view.tag == 1122{
+                view.removeFromSuperview()
+            }
+        }
+    }
+    
+    @objc func client_Btn() {
+        changeViewController(identifier: "TermAndCondition")
+    }
+    @objc func proposal_Btn() {
+        changeViewController(identifier: "PrivacyPolicy")
+    }
+    @objc func job_Btn() {
+        //changeViewController(identifier: "New Job")
+    }
+    @objc func invoice_Btn() {
+        changeViewController(identifier: "FeedbackAndContactUs")
+    }
+    @objc func task_Btn() {
+        changeViewController(identifier: "FeedbackAndContactUs")
+    }
+    
+    func changeViewController(identifier:String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: identifier)
+        self.present(newViewController, animated: true, completion: nil)
     }
 }

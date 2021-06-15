@@ -23,16 +23,35 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     @IBAction func ResetPasswordBtnAction(_ sender: Any) {
-        //if let email = EmailTF.text{
-        let email = EmailTF.text!
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if error != nil{
-                print("Email Sended sucessfully")
-            }else{
-                print(error)
+        if EmailTF.text == nil || EmailTF.text == ""{
+            
+        }else{
+            Auth.auth().sendPasswordReset(withEmail: EmailTF.text!) { error in
+                DispatchQueue.main.async {
+                    if error != nil {
+                        // YOUR ERROR CODE
+                        self.ErrorAlertMessage(title: "Alert", description: error!.localizedDescription)
+                    } else {
+                        //YOUR SUCCESS MESSAGE
+                        self.ErrorAlertMessage(title: "Alert", description: "Verification email sended please check your email inbox")
+                    }
+                }
             }
         }
-        //}//end if let email statement
     }
     
+    func ErrorAlertMessage(title:String,description:String) {
+        let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                alert.dismiss(animated: true, completion: nil)
+            case .cancel:
+                print("cancel")
+            case .destructive:
+                print("destructive")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

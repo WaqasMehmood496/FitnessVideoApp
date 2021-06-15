@@ -60,6 +60,7 @@ class CreateAccountViewController: UIViewController {
 
 //MARK:- FUNCTION EXTENSION'S
 extension CreateAccountViewController{
+    
     // Add some padding into all text fields from left and right
     func addingTextfieldsPadding() {
         let paddingValue = CGFloat(12)
@@ -110,47 +111,26 @@ extension CreateAccountViewController{
             mAuth.createUser(withEmail: email, password: password) { result, err in
                 if let error = err {
                     print(error)
-                    let alert = UIAlertController(title: "Alert", message: "Email Already Exist", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                        switch action.style{
-                        case .default:
-                            alert.dismiss(animated: true, completion: nil)
-                        case .cancel:
-                            print("cancel")
-                        case .destructive:
-                            print("destructive")
-                        }
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                    self.hud.dismiss(afterDelay: 0.0)
+                    self.hud.dismiss()
+                    self.ErrorAlertMessage(title: "Alert", description: "Email Already Exist")
+                    
                 }
                 else{
                     self.mAuth.currentUser?.sendEmailVerification(completion: { err in
                         if let error = err{
                             print(error)
-                            self.hud.dismiss(afterDelay: 3.0)
+                            self.ErrorAlertMessage(title: "Alert", description: error.localizedDescription)
+                            self.hud.dismiss()
                         }
                         else{
                             self.insertUsertoDataBase(fname: fname, lname: lastname, lastname: "\(fname) \(lastname)", password: password, mobilenumber: mobilenumber, imageURL: "", email: email)
-                            self.hud.dismiss(afterDelay: 3.0)
-                            let alert = UIAlertController(title: "Verification email Sent", message: "Verify your email.", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                                switch action.style{
-                                case .default:
-                                    self.changeVC(identifier: "Tabbar")
-                                case .cancel:
-                                    print("cancel")
-                                case .destructive:
-                                    print("destructive")
-                                }
-                            }))
-                            self.present(alert, animated: true, completion: nil)
+                            self.hud.dismiss()
                         }
-                    })
-                }
-            }
-        }
-    }
+                    })//End send email varification complition
+                }//End error statement
+            }//End auth create user complition
+        }//End textfields null verification
+    }//End sign up user function
     
     func insertUsertoDataBase(fname:String,lname:String,lastname:String,password:String,mobilenumber:String,imageURL:String,email:String){
         guard let user = mAuth.currentUser?.uid else {
@@ -170,7 +150,40 @@ extension CreateAccountViewController{
         ])
         
         let currentuser = LoginModel(age: "", email: email, f_name: fname, full_name: "\(fname) \(lastname)", gender: "", height: "", l_name: lastname, mobile_number: mobilenumber, password: password, weight: "")
+        //Save into cache
         CommonHelper.saveCachedUserData(currentuser)
+        
+        //Show email verification alert
+        self.AlertMessage(title: "Verification email Sent", description: "Verify your email.", identifier: "Tabbar")
     }
     
+    func AlertMessage(title:String,description:String,identifier:String) {
+        let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                self.changeVC(identifier: identifier)
+            case .cancel:
+                print("cancel")
+            case .destructive:
+                print("destructive")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func ErrorAlertMessage(title:String,description:String) {
+        let alert = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                alert.dismiss(animated: true, completion: nil)
+            case .cancel:
+                print("cancel")
+            case .destructive:
+                print("destructive")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

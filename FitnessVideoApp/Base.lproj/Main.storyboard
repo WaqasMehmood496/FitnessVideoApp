@@ -1328,6 +1328,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="rni-Ba-n1G">
                         <barButtonItem key="backBarButtonItem" title=" " id="udW-qk-4ME"/>
+                        <barButtonItem key="leftBarButtonItem" image="22" id="wDU-MB-fmy">
+                            <inset key="imageInsets" minX="5" minY="0.0" maxX="5" maxY="5"/>
+                            <connections>
+                                <action selector="MenuBtnAction:" destination="b8O-ql-5D9" id="nXm-KI-F8z"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="adv_CollectionView" destination="VoC-n0-vBi" id="BWX-RZ-MIP"/>
@@ -1385,14 +1391,14 @@
                                                 <rect key="frame" x="32" y="64" width="350" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katherine Elisabeth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnd-Qj-7GY">
-                                                        <rect key="frame" x="8" y="8" width="334" height="24"/>
-                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <rect key="frame" x="8" y="8" width="334" height="21.5"/>
+                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
+                                                        <color key="textColor" name="Dark Background Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katherineelizebeth@info.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6h-AO-54l">
-                                                        <rect key="frame" x="8" y="32" width="334" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="8" y="29.5" width="334" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1411,14 +1417,14 @@
                                                 <rect key="frame" x="32" y="122" width="350" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uno-3m-CC9">
-                                                        <rect key="frame" x="8" y="8" width="334" height="24"/>
-                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <rect key="frame" x="8" y="8" width="334" height="21.5"/>
+                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
+                                                        <color key="textColor" name="Dark Background Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katherineelizebeth@info.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj5-lO-zfq">
-                                                        <rect key="frame" x="8" y="32" width="334" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="8" y="29.5" width="334" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1437,14 +1443,14 @@
                                                 <rect key="frame" x="32" y="180" width="350" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vW-2y-bVG">
-                                                        <rect key="frame" x="8" y="8" width="334" height="24"/>
-                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <rect key="frame" x="8" y="8" width="334" height="21.5"/>
+                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
+                                                        <color key="textColor" name="Dark Background Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Katherineelizebeth@info.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yO-QW-BKZ">
-                                                        <rect key="frame" x="8" y="32" width="334" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="8" y="29.5" width="334" height="19.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1463,13 +1469,13 @@
                                                 <rect key="frame" x="32" y="238" width="350" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asa-x7-QwS">
-                                                        <rect key="frame" x="8" y="8" width="11" height="24"/>
-                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <rect key="frame" x="8" y="8" width="10" height="21.5"/>
+                                                        <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
+                                                        <color key="textColor" name="Dark Background Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favourite videos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Azk-Qc-Gym">
-                                                        <rect key="frame" x="23" y="12.5" width="98" height="15"/>
+                                                        <rect key="frame" x="22" y="11.5" width="98" height="15"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="15" id="GuN-xT-uu8"/>
                                                             <constraint firstAttribute="width" constant="98" id="oFZ-Jc-jge"/>
@@ -1488,8 +1494,8 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tj2-3F-lw6">
-                                                <rect key="frame" x="32" y="439.5" width="62" height="36"/>
-                                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="20"/>
+                                                <rect key="frame" x="32" y="441.5" width="56" height="34"/>
+                                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="18"/>
                                                 <state key="normal" title="Logout">
                                                     <color key="titleColor" name="Dark Background Color"/>
                                                 </state>
@@ -2938,10 +2944,10 @@
             </objects>
             <point key="canvasLocation" x="-1755" y="-447"/>
         </scene>
-        <!--View Controller-->
+        <!--Privacy Policy View Controller-->
         <scene sceneID="cz9-OF-2zr">
             <objects>
-                <viewController storyboardIdentifier="PrivacyPolicy" id="hCg-M0-qv7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyPolicy" modalPresentationStyle="fullScreen" id="hCg-M0-qv7" customClass="PrivacyPolicyViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PdI-j4-DPd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2959,12 +2965,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-gk-m1v">
-                                                <rect key="frame" x="34" y="15" width="15" height="15"/>
+                                                <rect key="frame" x="25.5" y="6.5" width="32" height="32"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="15" id="4Pm-Ot-nAM"/>
-                                                    <constraint firstAttribute="height" constant="15" id="I89-hK-IBw"/>
+                                                    <constraint firstAttribute="width" constant="32" id="4Pm-Ot-nAM"/>
+                                                    <constraint firstAttribute="height" constant="32" id="I89-hK-IBw"/>
                                                 </constraints>
-                                                <state key="normal" image="back"/>
+                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="arrow.backward" catalog="system"/>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -3871,10 +3878,10 @@
             </objects>
             <point key="canvasLocation" x="1336" y="-441"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tabbar View Controller-->
         <scene sceneID="dJg-hS-DQy">
             <objects>
-                <tabBarController storyboardIdentifier="Tabbar" automaticallyAdjustsScrollViewInsets="NO" id="WeB-5A-ju0" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Tabbar" automaticallyAdjustsScrollViewInsets="NO" id="WeB-5A-ju0" customClass="TabbarViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" itemPositioning="fill" id="2Js-U9-WYf">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -3911,8 +3918,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jT7-X4-fh6">
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="186.5"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aa1" translatesAutoresizingMaskIntoConstraints="NO" id="S0q-yt-cr3">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aa1" translatesAutoresizingMaskIntoConstraints="NO" id="S0q-yt-cr3">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="186.5"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7m8-om-umR">
                                                         <rect key="frame" x="19" y="107.5" width="335" height="65"/>
@@ -3994,7 +4006,7 @@
                                                             <constraint firstItem="ATF-TM-bZF" firstAttribute="height" secondItem="7m8-om-umR" secondAttribute="height" multiplier="0.6" id="qxE-WH-624"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UO8-MT-u6a">
+                                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UO8-MT-u6a">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="186.5"/>
                                                         <connections>
                                                             <action selector="BasicBtnAction:" destination="yi0-6x-B9S" eventType="touchUpInside" id="aeO-p6-tny"/>
@@ -4014,14 +4026,24 @@
                                                     <constraint firstAttribute="trailing" secondItem="UO8-MT-u6a" secondAttribute="trailing" id="qB6-22-bBQ"/>
                                                     <constraint firstItem="7m8-om-umR" firstAttribute="height" secondItem="jT7-X4-fh6" secondAttribute="height" multiplier="0.35" id="yFe-eY-pPp"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4I-JY-5Rv">
                                                 <rect key="frame" x="0.0" y="196.5" width="373" height="187"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aa4" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-wv-2KC">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aa4" translatesAutoresizingMaskIntoConstraints="NO" id="0Uo-wv-2KC">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="187"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZb-cc-8fB">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZb-cc-8fB">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="187"/>
                                                         <connections>
                                                             <action selector="ItermediateBtnAction:" destination="yi0-6x-B9S" eventType="touchUpInside" id="wfK-Je-5XG"/>
@@ -4122,14 +4144,24 @@
                                                     <constraint firstItem="kQC-cV-Rai" firstAttribute="centerX" secondItem="b4I-JY-5Rv" secondAttribute="centerX" id="no1-M0-hWh"/>
                                                     <constraint firstAttribute="trailing" secondItem="TZb-cc-8fB" secondAttribute="trailing" id="xW0-uy-Mm5"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crh-UY-9CP">
                                                 <rect key="frame" x="0.0" y="393.5" width="373" height="186.5"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aa6" translatesAutoresizingMaskIntoConstraints="NO" id="nmV-vx-aG1">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aa6" translatesAutoresizingMaskIntoConstraints="NO" id="nmV-vx-aG1">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="186.5"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ha4-Ve-lmd">
+                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ha4-Ve-lmd">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="186.5"/>
                                                         <connections>
                                                             <action selector="AdvanceBtnAction:" destination="yi0-6x-B9S" eventType="touchUpInside" id="oUA-1j-dMp"/>
@@ -4230,6 +4262,11 @@
                                                     <constraint firstItem="vkK-xY-8Rm" firstAttribute="centerX" secondItem="crh-UY-9CP" secondAttribute="centerX" id="m3g-Sf-WL4"/>
                                                     <constraint firstItem="nmV-vx-aG1" firstAttribute="leading" secondItem="crh-UY-9CP" secondAttribute="leading" id="ur0-Za-TWI"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <constraints>
@@ -4439,7 +4476,7 @@
         <scene sceneID="qCx-G5-PbE">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="10i-oi-B6K" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="4" selectedImage="f" id="aqL-if-QE9">
+                    <tabBarItem key="tabBarItem" title="" image="play_list" selectedImage="f" id="aqL-if-QE9">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -4797,7 +4834,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Aky-zE-fy2"/>
+        <segue reference="vJp-90-nuw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1" width="750" height="1626"/>
@@ -4815,7 +4852,6 @@
         <image name="aa4" width="400" height="226"/>
         <image name="aa6" width="400" height="226"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
-        <image name="back" width="50" height="50"/>
         <image name="c" width="45" height="40"/>
         <image name="f" width="41" height="40"/>
         <image name="fastforward" width="48" height="48"/>
@@ -4826,6 +4862,7 @@
         <image name="pause" width="48" height="48"/>
         <image name="pip" width="48" height="48"/>
         <image name="play" width="48" height="48"/>
+        <image name="play_list" width="38.5" height="37.5"/>
         <image name="rewind" width="48" height="48"/>
         <image name="s" width="35" height="40"/>
         <image name="skipBackward" width="48" height="48"/>

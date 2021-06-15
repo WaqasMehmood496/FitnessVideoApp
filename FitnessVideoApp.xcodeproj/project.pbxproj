@@ -51,6 +51,8 @@
 		761E16F7265FE8E900031A5B /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761E16E2265FE8E900031A5B /* DataBaseHelper.swift */; };
 		761E16F8265FE8E900031A5B /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761E16E3265FE8E900031A5B /* NetworkConnection.swift */; };
 		761E174B265FEA7C00031A5B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761E174A265FEA7C00031A5B /* LoginModel.swift */; };
+		764455D52678A76300E25AE3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764455D42678A76300E25AE3 /* TabbarViewController.swift */; };
+		764455D82678AD5200E25AE3 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */; };
 		76F633802664CC6F00D8C7CA /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F6337F2664CC6F00D8C7CA /* FavoriteModel.swift */; };
 		76F81351266103BB007BF955 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F81350266103BB007BF955 /* VideoModel.swift */; };
 		76FB99CE266F6A8500CE2ECA /* intermVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB99CD266F6A8500CE2ECA /* intermVideoViewController.swift */; };
@@ -123,6 +125,8 @@
 		761E16E2265FE8E900031A5B /* DataBaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseHelper.swift; sourceTree = "<group>"; };
 		761E16E3265FE8E900031A5B /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		761E174A265FEA7C00031A5B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		764455D42678A76300E25AE3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		76F6337F2664CC6F00D8C7CA /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		76F81350266103BB007BF955 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		76FB99CD266F6A8500CE2ECA /* intermVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = intermVideoViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 				C319075425F1107D0028709B /* IndermediateCViewController.swift */,
 				C371788225EFD1FC0025B3AD /* favouriteViewController.swift */,
 				C3FFD37625EFBC0D008239A1 /* CategoryViewController.swift */,
+				764455D42678A76300E25AE3 /* TabbarViewController.swift */,
 			);
 			path = tabbar_Views;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				761E16A8265FD98B00031A5B /* FeedbackViewController.swift */,
 				761E16AC265FDB9200031A5B /* TermAndConditionsViewController.swift */,
 				761376E32667850D003B8618 /* EditProfileViewController.swift */,
+				764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764455D52678A76300E25AE3 /* TabbarViewController.swift in Sources */,
 				C36FADB725EF8B10009ABAC2 /* CreateAccountViewController.swift in Sources */,
 				76FB99CE266F6A8500CE2ECA /* intermVideoViewController.swift in Sources */,
 				761E16F2265FE8E900031A5B /* Imagepicker.swift in Sources */,
@@ -486,6 +493,7 @@
 				761E16EC265FE8E900031A5B /* CommonHelper.swift in Sources */,
 				76F633802664CC6F00D8C7CA /* FavoriteModel.swift in Sources */,
 				761E16F8265FE8E900031A5B /* NetworkConnection.swift in Sources */,
+				764455D82678AD5200E25AE3 /* PrivacyPolicyViewController.swift in Sources */,
 				C331C7F825F761A500492615 /* interViewCollectionViewCell.swift in Sources */,
 				761E16A9265FD98B00031A5B /* FeedbackViewController.swift in Sources */,
 				761E16E6265FE8E900031A5B /* DatabaseRepresentation.swift in Sources */,
