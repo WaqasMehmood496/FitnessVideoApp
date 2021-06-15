@@ -7,18 +7,32 @@
 //
 
 import UIKit
-
+import Firebase
 class ForgotPasswordViewController: UIViewController {
-
+    //MARK: IBOUTLET'S
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var emailView: UIView!
-    
     @IBOutlet weak var resetBtn: UIButton!
+    @IBOutlet weak var EmailTF: UITextField!
+    
+    //MARK: VARIABLE'S
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainView.layer.cornerRadius =  mainView.bounds.size.height/10
-        emailView.layer.cornerRadius = emailView.bounds.size.height/2
-        resetBtn.layer.cornerRadius = resetBtn.bounds.size.height/2
+        ref = Database.database().reference()
     }
+    
+    @IBAction func ResetPasswordBtnAction(_ sender: Any) {
+        //if let email = EmailTF.text{
+        let email = EmailTF.text!
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil{
+                print("Email Sended sucessfully")
+            }else{
+                print(error)
+            }
+        }
+        //}//end if let email statement
+    }
+    
 }
