@@ -39,14 +39,26 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
     private let spacingIpad:CGFloat = 30.0
     var previousConstraints: [NSLayoutConstraint] = []
     let playerViewController = AVPlayerViewController()
-    
+    var playlist = AVQueuePlayer()
+    var totalVideoDuration = Double()
+    var observer = (Any).self
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionViewSetup()
         ref = Database.database().reference()
         self.getFavoritesFromFirebase()
-        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        playlist.pause()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        playlist.play()
+    }
+    
+    @IBAction func BackButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -88,21 +100,58 @@ extension intermVideoViewController{
             }
         }
         //let videoURL = URL(string: url)
-        let playlist = AVQueuePlayer(items: items)
+        playlist = AVQueuePlayer(items: items)
         playlist.rate = 1
         playerViewController.player = playlist
         playerViewController.delegate = self
         playerViewController.view.frame = self.containerView.frame
         playerViewController.showsPlaybackControls = true
-        addChild(playerViewController)
         self.containerView.addSubview(playerViewController.view)
+        addChild(playerViewController)
         playlist.play()
+        //playlist.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        playlist.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        playlist.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.didPlayToEnd), name: .AVPlayerItemTimeJumped, object: nil)
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if (keyPath == "rate") {
+            print(playlist.rate)
+        }
+        if (keyPath == "status") {
+            print(playlist.status)
+            if let duration = playlist.currentItem?.asset.duration {
+                let seconds = CMTimeGetSeconds(duration)
+                self.totalVideoDuration = seconds
+                print("Seconds :: \(seconds)")
+                self.addTheardThatCheckTimeOfMutingVideo()
+            }
+        }
+    }
+    func addTheardThatCheckTimeOfMutingVideo() {
+        // Invoke callback every second
+        let interval = CMTime(seconds:totalVideoDuration - 5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+
+        // Queue on which to invoke the callback
+        let mainQueue = DispatchQueue.main
+
+        // Keep the reference to remove
+        playlist.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue) { time in
+            print(time)
+            if time.seconds >= self.totalVideoDuration - 10{
+                self.playlist.isMuted = true
+            }
+        }
+    }
+    
     // REMOVE VIDEO FROM CURRENT PLAYER
     func removePlayer(url:String) {
         if let url = URL.init(string: url) {
         }
     }
+    
     // CHECK TYPE OF VIDEO WHICH IS EITHER BASIC , INTERMEDIATE OR ADVANCE
     func checkType(video:FavoriteModel) -> String {
         let firstChar = video.name.first

@@ -12,7 +12,6 @@ class PrivacyPolicyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     @IBAction func BackBtnAction(_ sender: Any) {

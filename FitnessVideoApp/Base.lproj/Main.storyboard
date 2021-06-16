@@ -3189,7 +3189,7 @@
         <!--Interm Video View Controller-->
         <scene sceneID="laf-hD-0T7">
             <objects>
-                <viewController id="0fx-dF-b5v" customClass="intermVideoViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerVC" id="0fx-dF-b5v" customClass="intermVideoViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LfU-jH-h9y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3199,7 +3199,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVR-Zk-cdm">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="750" constant="300" id="03D-9T-x8g"/>
                                         </constraints>
@@ -3362,8 +3362,8 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="9Wc-K5-sSc" secondAttribute="trailing" id="3Pe-Ip-mZe"/>
                                     <constraint firstAttribute="trailing" secondItem="iVR-Zk-cdm" secondAttribute="trailing" id="6eF-yD-3tC"/>
+                                    <constraint firstItem="iVR-Zk-cdm" firstAttribute="top" secondItem="y6Z-eE-XmG" secondAttribute="top" id="A0f-ci-JUu"/>
                                     <constraint firstItem="9Wc-K5-sSc" firstAttribute="leading" secondItem="y6Z-eE-XmG" secondAttribute="leading" id="FF6-gy-Iey"/>
-                                    <constraint firstItem="iVR-Zk-cdm" firstAttribute="top" secondItem="y6Z-eE-XmG" secondAttribute="top" id="Geq-2E-ojO"/>
                                     <constraint firstItem="9Wc-K5-sSc" firstAttribute="top" secondItem="iVR-Zk-cdm" secondAttribute="bottom" id="R1g-mI-jMe"/>
                                     <constraint firstAttribute="bottom" secondItem="9Wc-K5-sSc" secondAttribute="bottom" id="Vi4-Qr-qu2"/>
                                     <constraint firstItem="iVR-Zk-cdm" firstAttribute="leading" secondItem="y6Z-eE-XmG" secondAttribute="leading" id="WA0-Es-nSQ"/>
@@ -4828,7 +4828,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="ffZ-aL-Icq"/>
+        <segue reference="vJp-90-nuw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1" width="750" height="1626"/>

@@ -31,6 +31,16 @@ class CategoryViewController: UIViewController {
     @IBAction func BasicBtnAction(_ sender: Any) {
         self.selectedType = 0
         self.performSegue(withIdentifier: "PlayerVC", sender: nil)
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vcc = storyboard.instantiateViewController(withIdentifier: "PlayerVC") as! intermVideoViewController
+//        if let basic = self.videos.basic{
+//            vcc.videos = basic
+//            vcc.thumbnail = 0
+//            vcc.selectedType = self.selectedType
+//            vcc.selectedVideo = IndexPath(row: 0, section: 0)
+//        }
+//        
+//        self.present(vcc, animated: true, completion: nil)
     }
     @IBAction func ItermediateBtnAction(_ sender: Any) {
         self.selectedType = 1
@@ -73,6 +83,7 @@ class CategoryViewController: UIViewController {
     func VideosApiCall() {
         self.dataDic = [String:Any]()
         let hud = JGProgressHUD()
+        hud.show(in: self.view)
         self.getLoginWebservice(.myvideoslist, hud: hud)
     }
 }

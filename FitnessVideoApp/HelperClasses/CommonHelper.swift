@@ -249,7 +249,7 @@ class CommonHelper
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vcc: UIViewController = storyboard.instantiateViewController(withIdentifier: identifier) as UIViewController
        // vcc.modalPresentationStyle = .fullScreen
-        vc.present(vcc, animated: true, completion: nil)
+        //vc.present(vcc, animated: true, completion: nil)
         return vcc
         //defaults.set(true, forKey: "userLoginStatus")
     }
