@@ -63,26 +63,48 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
 }
 
 
-// MARK:- FUNCTION'S EXTENSION
+//MARK:- ---------------- HELPING METHOD'S ----------------
+extension intermVideoViewController {
+    // Setup Collection View
+    func collectionViewSetup() {
+        
+        let layout = UICollectionViewFlowLayout()
+        if UIDevice.current.userInterfaceIdiom == .phone{
+            layout.sectionInset = UIEdgeInsets(top: spacingIphone, left: spacingIphone, bottom: spacingIphone, right: spacingIphone)
+            layout.minimumLineSpacing = spacingIphone
+            layout.minimumInteritemSpacing = spacingIphone
+        }
+        else{
+            layout.sectionInset = UIEdgeInsets(top: spacingIpad, left: spacingIpad, bottom: spacingIpad, right: spacingIpad)
+            layout.minimumLineSpacing = spacingIpad
+            layout.minimumInteritemSpacing = spacingIpad
+        }
+        
+        self.interVideoCollectionView?.collectionViewLayout = layout
+    }
+}
+
+
+//MARK:- ---------------- VIDEO PLAYER METHOD'S ----------------
 extension intermVideoViewController{
     // PLAY FIRST VIDEO OF ARRAY
     func playVideo() {
         if isFavorite{
             self.navigationItem.title = self.favoriteVideos[selectedVideo.row].title
             self.Description.text = self.favoriteVideos[selectedVideo.row].name
-            player(url: self.favoriteVideos[selectedVideo.row].url, isFavourte: true)
+            player(items: getAllPlayList(isFavourte: true))
             self.VideoTitle.text = self.favoriteVideos[selectedVideo.row].title
             self.CreatedTime.text = "2 hours"
         }else{
             self.navigationItem.title = self.videos[selectedVideo.row].title
             self.Description.text = self.videos[selectedVideo.row].description
-            player(url:  self.videos[selectedVideo.row].urls, isFavourte: false)
+            player(items: getAllPlayList(isFavourte: false))
             self.VideoTitle.text = self.videos[selectedVideo.row].title
             self.CreatedTime.text = "2 hours"
         }
     }
-    //VIDEO PLAYER METHOD
-    func player(url:String,isFavourte:Bool) {
+    
+    func getAllPlayList(isFavourte:Bool) -> [AVPlayerItem] {
         var items = [AVPlayerItem]()
         if isFavourte{
             for i in favoriteVideos{
@@ -99,9 +121,14 @@ extension intermVideoViewController{
                 }
             }
         }
-        //let videoURL = URL(string: url)
+        return items
+    }
+    
+    //VIDEO PLAYER METHOD
+    func player(items:[AVPlayerItem]) {
         playlist = AVQueuePlayer(items: items)
         playlist.rate = 1
+        
         playerViewController.player = playlist
         playerViewController.delegate = self
         playerViewController.view.frame = self.containerView.frame
@@ -109,13 +136,14 @@ extension intermVideoViewController{
         self.containerView.addSubview(playerViewController.view)
         addChild(playerViewController)
         playlist.play()
-        //playlist.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
         playlist.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
         playlist.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: .AVPlayerItemDidPlayToEndTime, object: playlist.currentItem)
         
-        //NotificationCenter.default.addObserver(self, selector: #selector(self.didPlayToEnd), name: .AVPlayerItemTimeJumped, object: nil)
+        
     }
     
+    //THIS METHODS DETEACT THE TOTAL TIME OF VIDEO AND START MUTE FUNCTION
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if (keyPath == "rate") {
             print(playlist.rate)
@@ -130,18 +158,29 @@ extension intermVideoViewController{
             }
         }
     }
+    
+    @objc func playerDidFinishPlaying(note: NSNotification){
+        print("Video Finished")
+        self.playlist.isMuted = false
+    }
+    
+    //THIS METHOD TRACK THE VIDEO TIME AND WHEN ITS NEAR TO END IT WILL MUTE THE AUDIO BEFORE 5 SECONDS
     func addTheardThatCheckTimeOfMutingVideo() {
         // Invoke callback every second
         let interval = CMTime(seconds:totalVideoDuration - 5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-
         // Queue on which to invoke the callback
         let mainQueue = DispatchQueue.main
-
         // Keep the reference to remove
         playlist.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue) { time in
             print(time)
-            if time.seconds >= self.totalVideoDuration - 10{
-                self.playlist.isMuted = true
+            if let duration = self.playlist.currentItem?.asset.duration {
+                let seconds = CMTimeGetSeconds(duration)
+                self.totalVideoDuration = seconds
+                if time.seconds >= self.totalVideoDuration - 10{
+                    self.playlist.isMuted = true
+                }else{
+                    self.playlist.isMuted = false
+                }
             }
         }
     }
@@ -165,6 +204,11 @@ extension intermVideoViewController{
             return self.advance[lstValue]
         }
     }
+}
+
+
+//MARK:- ---------------- FIREBASE METHOD'S ----------------
+extension intermVideoViewController {
     
     // GET ALL FAVORITES FROM FIREBASE DATABASE
     func getFavoritesFromFirebase() {
@@ -293,24 +337,6 @@ extension intermVideoViewController{
             "url":url
         ])
     }
-    
-    // Setup Collection View
-    func collectionViewSetup() {
-        
-        let layout = UICollectionViewFlowLayout()
-        if UIDevice.current.userInterfaceIdiom == .phone{
-            layout.sectionInset = UIEdgeInsets(top: spacingIphone, left: spacingIphone, bottom: spacingIphone, right: spacingIphone)
-            layout.minimumLineSpacing = spacingIphone
-            layout.minimumInteritemSpacing = spacingIphone
-        }
-        else{
-            layout.sectionInset = UIEdgeInsets(top: spacingIpad, left: spacingIpad, bottom: spacingIpad, right: spacingIpad)
-            layout.minimumLineSpacing = spacingIpad
-            layout.minimumInteritemSpacing = spacingIpad
-        }
-        
-        self.interVideoCollectionView?.collectionViewLayout = layout
-    }
 }
 
 
@@ -366,12 +392,16 @@ extension intermVideoViewController:UICollectionViewDelegateFlowLayout {
             self.CreatedTime.text = "2 hours"
             self.Description.text = self.favoriteVideos[indexPath.row].name
             self.removePlayer(url: self.favoriteVideos[indexPath.row].url)
+            let list = [AVPlayerItem(url: URL(string: self.favoriteVideos[indexPath.row].url)!)]
+            player(items: list)
         }else{
             self.title = self.videos[indexPath.row].title
             self.VideoTitle.text = self.videos[indexPath.row].title
             self.CreatedTime.text = "2 hours"
             self.Description.text = self.videos[indexPath.row].description
             self.removePlayer(url: self.videos[indexPath.row].urls)
+            let list = [AVPlayerItem(url: URL(string: self.videos[indexPath.row].urls)!)]
+            player(items: list)
         }
     }
     
@@ -456,5 +486,4 @@ extension intermVideoViewController:UICollectionViewDelegateFlowLayout {
 
 // MARK:- AVPlayerViewController
 extension intermVideoViewController:AVPlayerViewControllerDelegate,AVAudioPlayerDelegate{
-    
 }
