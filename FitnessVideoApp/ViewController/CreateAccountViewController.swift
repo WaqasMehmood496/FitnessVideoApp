@@ -144,7 +144,7 @@ extension CreateAccountViewController{
             "gender":"",
             "height":"",
             "l_name":lastname,
-            "mobile_number":mobilenumber,
+            "mobile_number":"",
             "password":password,
             "weight":""
         ])
