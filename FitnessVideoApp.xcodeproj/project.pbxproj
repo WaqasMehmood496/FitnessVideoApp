@@ -53,6 +53,7 @@
 		761E174B265FEA7C00031A5B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761E174A265FEA7C00031A5B /* LoginModel.swift */; };
 		764455D52678A76300E25AE3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764455D42678A76300E25AE3 /* TabbarViewController.swift */; };
 		764455D82678AD5200E25AE3 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */; };
+		76CD51DB26C27B7F00EE64C4 /* DisclamerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD51DA26C27B7F00EE64C4 /* DisclamerAlertViewController.swift */; };
 		76F633802664CC6F00D8C7CA /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F6337F2664CC6F00D8C7CA /* FavoriteModel.swift */; };
 		76F81351266103BB007BF955 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F81350266103BB007BF955 /* VideoModel.swift */; };
 		76FB99CE266F6A8500CE2ECA /* intermVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FB99CD266F6A8500CE2ECA /* intermVideoViewController.swift */; };
@@ -127,6 +128,7 @@
 		761E174A265FEA7C00031A5B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		764455D42678A76300E25AE3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		76CD51DA26C27B7F00EE64C4 /* DisclamerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclamerAlertViewController.swift; sourceTree = "<group>"; };
 		76F6337F2664CC6F00D8C7CA /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		76F81350266103BB007BF955 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		76FB99CD266F6A8500CE2ECA /* intermVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = intermVideoViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				761E16AC265FDB9200031A5B /* TermAndConditionsViewController.swift */,
 				761376E32667850D003B8618 /* EditProfileViewController.swift */,
 				764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */,
+				76CD51DA26C27B7F00EE64C4 /* DisclamerAlertViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				764455D82678AD5200E25AE3 /* PrivacyPolicyViewController.swift in Sources */,
 				C331C7F825F761A500492615 /* interViewCollectionViewCell.swift in Sources */,
 				761E16A9265FD98B00031A5B /* FeedbackViewController.swift in Sources */,
+				76CD51DB26C27B7F00EE64C4 /* DisclamerAlertViewController.swift in Sources */,
 				761E16E6265FE8E900031A5B /* DatabaseRepresentation.swift in Sources */,
 				761E169C265FD7A100031A5B /* UIPopUp+Additions.swift in Sources */,
 				76F81351266103BB007BF955 /* VideoModel.swift in Sources */,

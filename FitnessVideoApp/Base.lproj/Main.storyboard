@@ -128,11 +128,118 @@
                         <outlet property="Create_Btn" destination="dKq-MO-CXk" id="2wb-fp-hZe"/>
                         <outlet property="DC_btn" destination="6rp-dL-p7i" id="vUw-r3-WBh"/>
                         <outlet property="Login_Btn" destination="exe-fn-axA" id="1pi-jg-oZl"/>
+                        <segue destination="h1g-XJ-rA6" kind="presentation" identifier="DisclamerAlertSegue" id="xEn-6G-0me"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-604" y="-1168"/>
+        </scene>
+        <!--Disclamer Alert View Controller-->
+        <scene sceneID="3BE-1J-Z9K">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="h1g-XJ-rA6" customClass="DisclamerAlertViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tdh-0m-XSu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ne-cA-BgW">
+                                <rect key="frame" x="50" y="324.5" width="314" height="247.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attension" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIB-pj-wca">
+                                        <rect key="frame" x="8" y="8" width="298" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="xx3-cR-AjF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fK-CT-e5D">
+                                        <rect key="frame" x="8" y="28" width="298" height="162.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="162.5" id="1Xu-OO-vau"/>
+                                        </constraints>
+                                        <string key="text">These short videos are not meant to replace daily exercise. Be sure to check with your doctor before start any exercise program. You must be 18 year or older to download this app. Be sure to get Mom and Dad's permission to do this short video clips.</string>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9oI-Q5-NUc">
+                                        <rect key="frame" x="8" y="194.5" width="298" height="45"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62g-JQ-6FD">
+                                                <rect key="frame" x="0.0" y="0.0" width="145" height="45"/>
+                                                <color key="backgroundColor" name="Dark Background Color"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                <state key="normal" title="Proceed">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="LoginBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8mp-Op-Bhb"/>
+                                                    <action selector="ProceedBtnAction:" destination="h1g-XJ-rA6" eventType="touchUpInside" id="qg4-af-eKG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-Wt-XU2">
+                                                <rect key="frame" x="153" y="0.0" width="145" height="45"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="Dark Background Color"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="CancelBtnAction:" destination="h1g-XJ-rA6" eventType="touchUpInside" id="T50-60-cFA"/>
+                                                    <action selector="LoginBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xF8-5E-paJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="DCP-1X-PfA"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LIB-pj-wca" secondAttribute="trailing" constant="8" id="7ZY-ud-SBy"/>
+                                    <constraint firstItem="8fK-CT-e5D" firstAttribute="top" secondItem="LIB-pj-wca" secondAttribute="bottom" constant="4" id="CYZ-ZK-7fj"/>
+                                    <constraint firstItem="9oI-Q5-NUc" firstAttribute="top" secondItem="8fK-CT-e5D" secondAttribute="bottom" constant="4" id="DfK-ef-BbJ"/>
+                                    <constraint firstItem="8fK-CT-e5D" firstAttribute="leading" secondItem="LIB-pj-wca" secondAttribute="leading" id="Dmg-GC-Idl"/>
+                                    <constraint firstItem="LIB-pj-wca" firstAttribute="leading" secondItem="8Ne-cA-BgW" secondAttribute="leading" constant="8" id="FZf-Zc-cyc"/>
+                                    <constraint firstItem="9oI-Q5-NUc" firstAttribute="leading" secondItem="8Ne-cA-BgW" secondAttribute="leading" constant="8" id="HYM-ry-IXi"/>
+                                    <constraint firstAttribute="bottom" secondItem="9oI-Q5-NUc" secondAttribute="bottom" constant="8" id="ajH-7h-JsI"/>
+                                    <constraint firstItem="LIB-pj-wca" firstAttribute="top" secondItem="8Ne-cA-BgW" secondAttribute="top" constant="8" id="eKE-jb-Y22"/>
+                                    <constraint firstAttribute="trailing" secondItem="9oI-Q5-NUc" secondAttribute="trailing" constant="8" id="egR-xR-atI"/>
+                                    <constraint firstItem="8fK-CT-e5D" firstAttribute="trailing" secondItem="LIB-pj-wca" secondAttribute="trailing" id="iOV-E4-H3N"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EV8-R5-dCh"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="8Ne-cA-BgW" firstAttribute="centerY" secondItem="tdh-0m-XSu" secondAttribute="centerY" id="Gh6-Lp-wKX"/>
+                            <constraint firstItem="8Ne-cA-BgW" firstAttribute="leading" secondItem="EV8-R5-dCh" secondAttribute="leading" constant="50" id="TXt-0J-Ywr"/>
+                            <constraint firstItem="EV8-R5-dCh" firstAttribute="trailing" secondItem="8Ne-cA-BgW" secondAttribute="trailing" constant="50" id="u2g-cC-hMo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="yxP-yY-iMe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="quZ-5q-aJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="201" y="-1169"/>
         </scene>
         <!--Login Screen View Controller-->
         <scene sceneID="QKa-Tv-y3j">
@@ -159,7 +266,7 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q5t-B9-teA">
-                                                        <rect key="frame" x="17" y="8" width="74.5" height="12"/>
+                                                        <rect key="frame" x="17" y="8" width="99" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="WJw-VH-ePb"/>
                                                         </constraints>
@@ -172,7 +279,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="PTN-pA-GN8" secondAttribute="bottom" id="Fob-6K-JVV"/>
                                                     <constraint firstItem="q5t-B9-teA" firstAttribute="leading" secondItem="PTN-pA-GN8" secondAttribute="trailing" constant="5" id="Pqz-Mi-tkB"/>
                                                     <constraint firstItem="PTN-pA-GN8" firstAttribute="width" secondItem="E99-Ma-C1I" secondAttribute="width" multiplier="0.1" id="R0H-fM-owv"/>
-                                                    <constraint firstItem="q5t-B9-teA" firstAttribute="width" secondItem="E99-Ma-C1I" secondAttribute="width" multiplier="0.6" id="R7u-8i-SmT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="q5t-B9-teA" secondAttribute="trailing" constant="8" id="Y9k-1F-x2d"/>
                                                     <constraint firstItem="PTN-pA-GN8" firstAttribute="leading" secondItem="E99-Ma-C1I" secondAttribute="leading" id="c55-rV-1KT"/>
                                                     <constraint firstAttribute="bottom" secondItem="q5t-B9-teA" secondAttribute="bottom" id="mfT-KF-2qw"/>
                                                     <constraint firstAttribute="height" constant="20" id="vTA-28-hEY"/>
@@ -231,6 +338,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5YD-vY-YAt">
                                                 <rect key="frame" x="83" y="0.0" width="248" height="71.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -253,7 +361,7 @@
                                                     <constraint firstAttribute="height" constant="14" id="ajR-mT-ebJ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -273,6 +381,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="2Gh-8k-69P"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -294,6 +403,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="7Cf-6l-EC0"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -315,6 +425,7 @@
                                                     <constraint firstAttribute="height" constant="14" id="BWK-kL-YDw"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -410,6 +521,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="W2e-1w-F3J"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -421,7 +533,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vh-SE-jCJ">
                                                 <rect key="frame" x="16" y="52.5" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lje-sY-1kx">
@@ -430,7 +542,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vY-oM-hLb">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7G-Ik-uIP">
@@ -462,6 +574,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Jqy-Sb-rFT"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -473,7 +586,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVR-fP-5zU">
                                                 <rect key="frame" x="16" y="139" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="335-Ow-cVD">
@@ -482,6 +595,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="dpz-dS-noj"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -493,7 +607,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67r-1b-yAr">
                                                 <rect key="frame" x="16" y="225.5" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3jm-ho-idW">
@@ -502,6 +616,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="D6b-XB-XSw"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -513,7 +628,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1I-Gj-hJR">
                                                 <rect key="frame" x="16" y="369.5" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type Here (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-Hf-03r">
@@ -522,6 +637,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="KDi-Oi-W85"/>
                                                 </constraints>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
@@ -533,13 +649,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hoh-1Y-Twt">
                                                 <rect key="frame" x="16" y="456" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Term And Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqe-9e-tvp">
                                                 <rect key="frame" x="16" y="542.5" width="382" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2K9-8O-Xu2">
@@ -563,7 +679,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nac-fR-dHR">
                                                         <rect key="frame" x="28" y="0.0" width="145" height="20"/>
                                                         <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="12"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" name="Dark Background Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -667,7 +783,7 @@
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="niw-st-JIo">
-                                                <rect key="frame" x="16" y="679" width="20" height="20"/>
+                                                <rect key="frame" x="16" y="690" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Exn-Zk-JXu"/>
                                                     <constraint firstAttribute="width" constant="20" id="f5N-oG-N4T"/>
@@ -682,7 +798,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree with term and conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDh-rG-hzu">
-                                                <rect key="frame" x="44" y="679" width="242" height="20"/>
+                                                <rect key="frame" x="44" y="690" width="242" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="l0s-s6-mmg"/>
                                                 </constraints>
@@ -690,8 +806,32 @@
                                                 <color key="textColor" name="Dark Background Color"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XrR-ZM-SeP">
+                                                <rect key="frame" x="16" y="722" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="YuJ-AP-8wv"/>
+                                                    <constraint firstAttribute="width" constant="20" id="rgw-HF-O6w"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are 18 years or older" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds9-pL-rL1">
+                                                <rect key="frame" x="44" y="722" width="189" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="ZAi-Ry-Cak"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="GillSans-SemiBold" family="Gill Sans" pointSize="17"/>
+                                                <color key="textColor" name="Dark Background Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6o-l0-IKt">
-                                                <rect key="frame" x="16" y="715" width="382" height="60"/>
+                                                <rect key="frame" x="16" y="750" width="382" height="60"/>
                                                 <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="dMU-Tj-am3"/>
@@ -711,14 +851,14 @@
                                                 </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KK9-Fc-WgR">
-                                                <rect key="frame" x="16" y="571" width="382" height="100"/>
+                                                <rect key="frame" x="16" y="571" width="382" height="111"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">All memberships are Non-Transferable &amp; Non-Refundable.
 
 All members must be over 16 to avail of facilities and services provided at Goldstone Gym &amp; Fitness.
 
 Goldstone Gym &amp; Fitness is a private members club and the management reserve the right to refuse membership to any individual without cause. Refrences may be required on a case by case basis and Garda checks will also be run on a case by case basis. Failure to pass a Garda check will result in membership termination and the refusal of entry again.</string>
-                                                <color key="textColor" systemColor="labelColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -750,32 +890,35 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                             <constraint firstItem="ozS-EM-DP7" firstAttribute="trailing" secondItem="8Vh-SE-jCJ" secondAttribute="trailing" id="JwY-Ex-cr5"/>
                                             <constraint firstItem="TAb-lE-GsY" firstAttribute="leading" secondItem="yQG-7D-NGz" secondAttribute="leading" id="Kf1-Lx-T42"/>
                                             <constraint firstItem="335-Ow-cVD" firstAttribute="leading" secondItem="67r-1b-yAr" secondAttribute="leading" id="KpE-Ia-uht"/>
+                                            <constraint firstItem="XrR-ZM-SeP" firstAttribute="top" secondItem="niw-st-JIo" secondAttribute="bottom" constant="12" id="NVF-zE-hYx"/>
                                             <constraint firstAttribute="trailing" secondItem="Lje-sY-1kx" secondAttribute="trailing" constant="16" id="Ner-EG-38g"/>
                                             <constraint firstItem="335-Ow-cVD" firstAttribute="trailing" secondItem="67r-1b-yAr" secondAttribute="trailing" id="Otj-iK-ScG"/>
                                             <constraint firstItem="TAb-lE-GsY" firstAttribute="top" secondItem="yQG-7D-NGz" secondAttribute="bottom" constant="8" id="P7q-5M-N36"/>
-                                            <constraint firstAttribute="bottom" secondItem="I6o-l0-IKt" secondAttribute="bottom" constant="43" id="QgT-g0-ENB"/>
                                             <constraint firstItem="ozS-EM-DP7" firstAttribute="top" secondItem="8Vh-SE-jCJ" secondAttribute="bottom" constant="8" id="QwV-Fm-bQU"/>
                                             <constraint firstItem="PeB-Hf-03r" firstAttribute="top" secondItem="Hoh-1Y-Twt" secondAttribute="bottom" constant="8" id="Seh-7M-kHG"/>
                                             <constraint firstItem="dVR-fP-5zU" firstAttribute="top" secondItem="ozS-EM-DP7" secondAttribute="bottom" constant="8" id="TXz-tO-02O"/>
                                             <constraint firstItem="I6o-l0-IKt" firstAttribute="leading" secondItem="KK9-Fc-WgR" secondAttribute="leading" id="TyU-Ff-KYd"/>
+                                            <constraint firstItem="ds9-pL-rL1" firstAttribute="centerY" secondItem="XrR-ZM-SeP" secondAttribute="centerY" id="U7j-De-bh4"/>
                                             <constraint firstItem="yQG-7D-NGz" firstAttribute="centerY" secondItem="IV2-dP-B2K" secondAttribute="centerY" id="VNH-vq-3jz"/>
                                             <constraint firstItem="h7o-2P-xyX" firstAttribute="top" secondItem="2K9-8O-Xu2" secondAttribute="bottom" constant="8" id="XAZ-lW-R7M"/>
                                             <constraint firstItem="h7o-2P-xyX" firstAttribute="leading" secondItem="2K9-8O-Xu2" secondAttribute="leading" id="YmH-R2-Z9u"/>
                                             <constraint firstItem="Hoh-1Y-Twt" firstAttribute="top" secondItem="3jm-ho-idW" secondAttribute="bottom" constant="8" id="abZ-Dm-rxy"/>
                                             <constraint firstItem="TAb-lE-GsY" firstAttribute="trailing" secondItem="yQG-7D-NGz" secondAttribute="trailing" id="b7o-9W-Ycy"/>
                                             <constraint firstItem="KK9-Fc-WgR" firstAttribute="leading" secondItem="eqe-9e-tvp" secondAttribute="leading" id="bLK-2s-KhB"/>
-                                            <constraint firstItem="niw-st-JIo" firstAttribute="top" secondItem="KK9-Fc-WgR" secondAttribute="bottom" constant="8" symbolic="YES" id="bYd-5x-lQJ"/>
                                             <constraint firstItem="Hoh-1Y-Twt" firstAttribute="leading" secondItem="f1I-Gj-hJR" secondAttribute="leading" id="bbC-DV-CtZ"/>
                                             <constraint firstItem="eqe-9e-tvp" firstAttribute="top" secondItem="PeB-Hf-03r" secondAttribute="bottom" constant="8" id="cqL-xB-N0A"/>
+                                            <constraint firstAttribute="bottom" secondItem="I6o-l0-IKt" secondAttribute="bottom" constant="8" id="d1W-Jw-fQ3"/>
                                             <constraint firstItem="KK9-Fc-WgR" firstAttribute="top" secondItem="eqe-9e-tvp" secondAttribute="bottom" constant="8" symbolic="YES" id="eOm-xe-4C2"/>
                                             <constraint firstItem="yQG-7D-NGz" firstAttribute="trailing" secondItem="335-Ow-cVD" secondAttribute="trailing" id="ebd-n7-Jpq"/>
                                             <constraint firstItem="GDh-rG-hzu" firstAttribute="centerY" secondItem="niw-st-JIo" secondAttribute="centerY" id="ere-SX-T2z"/>
                                             <constraint firstItem="PeB-Hf-03r" firstAttribute="trailing" secondItem="Hoh-1Y-Twt" secondAttribute="trailing" id="fA8-Hn-U3m"/>
                                             <constraint firstItem="PeB-Hf-03r" firstAttribute="leading" secondItem="Hoh-1Y-Twt" secondAttribute="leading" id="fHG-Pn-UgR"/>
                                             <constraint firstItem="3jm-ho-idW" firstAttribute="trailing" secondItem="f1I-Gj-hJR" secondAttribute="trailing" id="gj5-1K-62H"/>
+                                            <constraint firstItem="niw-st-JIo" firstAttribute="top" secondItem="KK9-Fc-WgR" secondAttribute="bottom" constant="8" id="gxS-eZ-IPy"/>
                                             <constraint firstItem="AhN-UN-qwk" firstAttribute="top" secondItem="dVR-fP-5zU" secondAttribute="bottom" constant="8" id="hdp-oq-3iy"/>
                                             <constraint firstItem="niw-st-JIo" firstAttribute="leading" secondItem="KK9-Fc-WgR" secondAttribute="leading" id="jrY-0C-SGt"/>
                                             <constraint firstItem="AhN-UN-qwk" firstAttribute="leading" secondItem="dVR-fP-5zU" secondAttribute="leading" id="jyV-78-3CM"/>
+                                            <constraint firstItem="XrR-ZM-SeP" firstAttribute="leading" secondItem="niw-st-JIo" secondAttribute="leading" id="k3y-ek-1wO"/>
                                             <constraint firstItem="h7o-2P-xyX" firstAttribute="trailing" secondItem="2K9-8O-Xu2" secondAttribute="trailing" id="lYI-q4-9fS"/>
                                             <constraint firstItem="2K9-8O-Xu2" firstAttribute="centerY" secondItem="IV2-dP-B2K" secondAttribute="centerY" id="liu-dA-xgc"/>
                                             <constraint firstAttribute="trailing" secondItem="8Vh-SE-jCJ" secondAttribute="trailing" constant="16" id="mXw-mP-ITV"/>
@@ -784,7 +927,8 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                             <constraint firstItem="f1I-Gj-hJR" firstAttribute="top" secondItem="h7o-2P-xyX" secondAttribute="bottom" constant="8" id="nDh-o6-uOq"/>
                                             <constraint firstItem="Hoh-1Y-Twt" firstAttribute="trailing" secondItem="f1I-Gj-hJR" secondAttribute="trailing" id="ncX-EQ-6tM"/>
                                             <constraint firstItem="Lje-sY-1kx" firstAttribute="top" secondItem="MJ7-xp-y7T" secondAttribute="top" constant="16" id="nrI-JP-5AU"/>
-                                            <constraint firstItem="I6o-l0-IKt" firstAttribute="top" secondItem="niw-st-JIo" secondAttribute="bottom" constant="16" id="tgC-q7-6wo"/>
+                                            <constraint firstItem="ds9-pL-rL1" firstAttribute="leading" secondItem="XrR-ZM-SeP" secondAttribute="trailing" constant="8" id="sPZ-qq-7xD"/>
+                                            <constraint firstItem="I6o-l0-IKt" firstAttribute="top" secondItem="XrR-ZM-SeP" secondAttribute="bottom" constant="8" id="tCJ-sd-7WL"/>
                                             <constraint firstItem="IV2-dP-B2K" firstAttribute="leading" secondItem="2K9-8O-Xu2" secondAttribute="trailing" constant="8" id="vBB-rN-TFt"/>
                                             <constraint firstItem="GDh-rG-hzu" firstAttribute="leading" secondItem="niw-st-JIo" secondAttribute="trailing" constant="8" id="xnb-TE-Y8v"/>
                                         </constraints>
@@ -816,6 +960,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                         <outlet property="LastNameTF" destination="AhN-UN-qwk" id="1hE-SV-5y4"/>
                         <outlet property="MoileNumberTF" destination="PeB-Hf-03r" id="EPx-PR-6jz"/>
                         <outlet property="PasswordTF" destination="335-Ow-cVD" id="k25-3F-UHw"/>
+                        <outlet property="UnderAgeImage" destination="XrR-ZM-SeP" id="Zzw-Tt-umP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9O9-QY-oaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -934,7 +1079,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfp-eu-S9I">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_banner_iv_1" translatesAutoresizingMaskIntoConstraints="NO" id="7ev-qD-bYK">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screenshot_20210808-221554_Office Mobile" translatesAutoresizingMaskIntoConstraints="NO" id="7ev-qD-bYK">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
                                                     </imageView>
                                                 </subviews>
@@ -955,7 +1100,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Basic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgH-zl-teL">
                                                                 <rect key="frame" x="8" y="8" width="398" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzy-EW-RaC">
@@ -1065,7 +1210,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intermediate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S75-9d-SMA">
                                                                 <rect key="frame" x="8" y="8" width="398" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKh-EU-RJY">
@@ -1175,7 +1320,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm6-vd-cHS">
                                                                 <rect key="frame" x="8" y="8" width="398" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See more" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdG-fT-Lky">
@@ -1621,7 +1766,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Level: Design Clip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5L-DZ-Efj">
                                                 <rect key="frame" x="83" y="31" width="248" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wil-w8-jNm">
@@ -2963,7 +3108,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4l-2k-9AO">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-gk-m1v">
@@ -2995,6 +3140,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
 All members must be over 16 to avail of facilities and services provided at Goldstone Gym &amp; Fitness.
 
 Goldstone Gym &amp; Fitness is a private members club and the management reserve the right to refuse membership to any individual without cause. Refrences may be required on a case by case basis and Garda checks will also be run on a case by case basis. Failure to pass a Garda check will result in membership termination and the refusal of entry again.</string>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -3195,13 +3341,13 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
         <!--Interm Video View Controller-->
         <scene sceneID="laf-hD-0T7">
             <objects>
-                <viewController storyboardIdentifier="PlayerVC" id="0fx-dF-b5v" customClass="intermVideoViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerVC" hidesBottomBarWhenPushed="YES" id="0fx-dF-b5v" customClass="intermVideoViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LfU-jH-h9y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6Z-eE-XmG">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVR-Zk-cdm">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -3211,7 +3357,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wc-K5-sSc">
-                                        <rect key="frame" x="0.0" y="300" width="414" height="425"/>
+                                        <rect key="frame" x="0.0" y="300" width="414" height="474"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorel ispum is sample dummy text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5K-N5-ieH">
                                                 <rect key="frame" x="16" y="16" width="382" height="19.5"/>
@@ -3219,7 +3365,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                                     <constraint firstAttribute="height" constant="19.5" id="rLk-dM-ZH3"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Katherine MC - 2 hours ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rt3-A7-jGc">
@@ -3232,7 +3378,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hzr-uz-j52">
-                                                <rect key="frame" x="0.0" y="114.5" width="414" height="310.5"/>
+                                                <rect key="frame" x="0.0" y="114.5" width="414" height="359.5"/>
                                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="AHB-11-DEK">
                                                     <size key="itemSize" width="190" height="145"/>
@@ -3606,7 +3752,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQX-Kx-DMZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMx-s5-hgw">
@@ -3733,7 +3879,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rae-Cp-GTM">
                                 <rect key="frame" x="169.5" y="60" width="75" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfE-ag-nhO">
@@ -4321,7 +4467,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aMm-SP-3yk">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="KqU-yT-hgx">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -4562,6 +4708,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="uZu-HB-AkN"/>
                                 </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -4576,6 +4723,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCg-uu-TRD">
                                         <rect key="frame" x="0.0" y="0.0" width="114" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -4587,6 +4735,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oLf-jv-VWr">
                                         <rect key="frame" x="134" y="0.0" width="114" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -4598,6 +4747,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KH9-MB-1pQ">
                                         <rect key="frame" x="268" y="0.0" width="114" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -4617,13 +4767,13 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <constraint firstAttribute="height" constant="21" id="WJP-dW-NiW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeA-zN-hfS">
                                 <rect key="frame" x="16" y="16" width="45" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KYK-Nk-Buf">
@@ -4632,6 +4782,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="YBZ-Ln-bAn"/>
                                 </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
@@ -4643,7 +4794,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sda-eh-S4X">
                                 <rect key="frame" x="16" y="350.5" width="382" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beH-dx-YHO">
@@ -4652,7 +4803,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <constraint firstAttribute="height" constant="21" id="Ukw-6r-Zna"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vHO-F3-sBc">
@@ -4661,6 +4812,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0B8-Lm-kmy">
                                         <rect key="frame" x="0.0" y="0.0" width="181" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -4672,6 +4824,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Type Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9xu-aT-TZH">
                                         <rect key="frame" x="201" y="0.0" width="181" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -4691,7 +4844,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
                                     <constraint firstAttribute="height" constant="21" id="qBm-1x-t93"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jty-BF-rnd">
@@ -4815,31 +4968,8 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
             <point key="canvasLocation" x="4876.811594202899" y="677.67857142857144"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="7sd-Yg-PgK">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-        <designable name="9W8-Fu-HF9">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-        <designable name="E4Q-MC-Rkf">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-        <designable name="LbQ-fM-SbB">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-        <designable name="UNq-d9-Rfj">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-        <designable name="hfM-Eh-EeR">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-        <designable name="vOd-G8-50W">
-            <size key="intrinsicContentSize" width="30" height="30"/>
-        </designable>
-    </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="vJp-90-nuw"/>
+        <segue reference="ffZ-aL-Icq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1" width="750" height="1626"/>
@@ -4853,6 +4983,7 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
         <image name="5" width="48" height="48"/>
         <image name="6" width="280" height="180"/>
         <image name="7" width="280" height="180"/>
+        <image name="Screenshot_20210808-221554_Office Mobile" width="1080" height="1066"/>
         <image name="aa1" width="400" height="226"/>
         <image name="aa4" width="400" height="226"/>
         <image name="aa6" width="400" height="226"/>
@@ -4863,7 +4994,6 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
         <image name="fullscreen" width="48" height="48"/>
         <image name="fullscreen_disable" width="48" height="48"/>
         <image name="h" width="31" height="40"/>
-        <image name="new_banner_iv_1" width="626" height="417"/>
         <image name="pause" width="48" height="48"/>
         <image name="pip" width="48" height="48"/>
         <image name="play" width="48" height="48"/>
@@ -4876,9 +5006,6 @@ Goldstone Gym &amp; Fitness is a private members club and the management reserve
             <color red="0.12200000137090683" green="0.1289999932050705" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="darkTextColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">

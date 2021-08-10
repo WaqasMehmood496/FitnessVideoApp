@@ -40,7 +40,15 @@ class FirstPageViewController: UIViewController {
         self.changeViewController(identifier: "selectDesignViewController")
     }
     @IBAction func CreateAccountBtnAction(_ sender: Any) {
-        self.changeViewController(identifier: "CreateAccountViewController")
+        self.performSegue(withIdentifier: "DisclamerAlertSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DisclamerAlertSegue"{
+            if let disclamerAlertVC = segue.destination as? DisclamerAlertViewController {
+                disclamerAlertVC.delegate = self
+            }
+        }
     }
     
 }
@@ -95,5 +103,10 @@ extension FirstPageViewController{
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: identifier)
         self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    //DELEGATE METHODS
+    func createNewAccountDelegate() {
+        self.changeViewController(identifier: "CreateAccountViewController")
     }
 }

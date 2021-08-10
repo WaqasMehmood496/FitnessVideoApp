@@ -57,9 +57,9 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
         playlist.play()
     }
     
-    @IBAction func BackButtonAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    //    @IBAction func BackButtonAction(_ sender: Any) {
+    //        self.dismiss(animated: true, completion: nil)
+    //    }
 }
 
 
@@ -167,19 +167,21 @@ extension intermVideoViewController{
     //THIS METHOD TRACK THE VIDEO TIME AND WHEN ITS NEAR TO END IT WILL MUTE THE AUDIO BEFORE 5 SECONDS
     func addTheardThatCheckTimeOfMutingVideo() {
         // Invoke callback every second
-        let interval = CMTime(seconds:totalVideoDuration - 5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-        // Queue on which to invoke the callback
-        let mainQueue = DispatchQueue.main
-        // Keep the reference to remove
-        playlist.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue) { time in
-            print(time)
-            if let duration = self.playlist.currentItem?.asset.duration {
-                let seconds = CMTimeGetSeconds(duration)
-                self.totalVideoDuration = seconds
-                if time.seconds >= self.totalVideoDuration - 10{
-                    self.playlist.isMuted = true
-                }else{
-                    self.playlist.isMuted = false
+        if totalVideoDuration > 0.0 {
+            let interval = CMTime(seconds:totalVideoDuration - 5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+            // Queue on which to invoke the callback
+            let mainQueue = DispatchQueue.main
+            // Keep the reference to remove
+            playlist.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue) { time in
+                print(time)
+                if let duration = self.playlist.currentItem?.asset.duration {
+                    let seconds = CMTimeGetSeconds(duration)
+                    self.totalVideoDuration = seconds
+                    if time.seconds >= self.totalVideoDuration - 10{
+                        self.playlist.isMuted = true
+                    }else{
+                        self.playlist.isMuted = false
+                    }
                 }
             }
         }

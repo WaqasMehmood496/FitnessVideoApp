@@ -19,10 +19,12 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var EmailTF: UITextField!
     @IBOutlet weak var MoileNumberTF: UITextField!
     @IBOutlet weak var AgreeTermsAndCondition: UIImageView!
+    @IBOutlet weak var UnderAgeImage: UIImageView!
     
     //MARK: VARIABLES
     var ref: DatabaseReference!
     var isTermsSelected = false
+    var isUnderAgeSelected = false
     var mAuth = Auth.auth()
     let hud = JGProgressHUD()
     
@@ -30,7 +32,7 @@ class CreateAccountViewController: UIViewController {
         super.viewDidLoad()
         self.addingTextfieldsPadding()
         ref = Database.database().reference()
-        AddGuestureOnTermBtn()
+        AddGuestureOnTermAndUnderAgeImage()
     }
     
     //MARK: IBACTION'S
@@ -39,21 +41,37 @@ class CreateAccountViewController: UIViewController {
     }
     
     @IBAction func CreateAccountBtnAction(_ sender: Any) {
-        if isTermsSelected{
-            self.SignUpUser()
+        if isTermsSelected {
+            if isUnderAgeSelected {
+                self.SignUpUser()
+            }else{
+                PopupHelper.alertWithOk(title: "Alert", message: "Check the age condition, if you are 18 years or older", controler: self)
+            }
+            
         }else{
             PopupHelper.alertWithOk(title: "Alert", message: "Check the term and condition", controler: self)
         }
     }
     
     // TERMS AND CONDITION TARGET
-    @objc func agreeTermAndCondition(_ sender:UITapGestureRecognizer){
+    @objc func agreeTermAndCondition(_ sender: UITapGestureRecognizer){
         if isTermsSelected{
             self.isTermsSelected = false
             self.AgreeTermsAndCondition.image = UIImage(named: "")
         }else{
             self.isTermsSelected = true
             self.AgreeTermsAndCondition.image = #imageLiteral(resourceName: "icons8-checked-checkbox-50")
+        }
+    }
+    
+    
+    @objc func underAgeImageGuesture(_ sender: UITapGestureRecognizer){
+        if isUnderAgeSelected{
+            self.isUnderAgeSelected = false
+            self.UnderAgeImage.image = UIImage(named: "")
+        }else{
+            self.isUnderAgeSelected = true
+            self.UnderAgeImage.image = #imageLiteral(resourceName: "icons8-checked-checkbox-50")
         }
     }
 }
@@ -82,10 +100,14 @@ extension CreateAccountViewController{
     }
     
     // Add guesture on UIImageview to make it check box
-    func AddGuestureOnTermBtn() {
-        let tab = UITapGestureRecognizer(target: self, action: #selector(agreeTermAndCondition(_:)))
+    func AddGuestureOnTermAndUnderAgeImage() {
+        let aggrement = UITapGestureRecognizer(target: self, action: #selector(agreeTermAndCondition(_:)))
         AgreeTermsAndCondition.isUserInteractionEnabled = true
-        AgreeTermsAndCondition.addGestureRecognizer(tab)
+        AgreeTermsAndCondition.addGestureRecognizer(aggrement)
+        
+        let underAge = UITapGestureRecognizer(target: self, action: #selector(underAgeImageGuesture(_:)))
+        UnderAgeImage.isUserInteractionEnabled = true
+        UnderAgeImage.addGestureRecognizer(underAge)
     }
     
     func changeVC(identifier:String){
@@ -113,16 +135,13 @@ extension CreateAccountViewController{
                     print(error)
                     self.hud.dismiss()
                     self.ErrorAlertMessage(title: "Alert", description: "Email Already Exist")
-                    
-                }
-                else{
+                } else {
                     self.mAuth.currentUser?.sendEmailVerification(completion: { err in
                         if let error = err{
                             print(error)
                             self.ErrorAlertMessage(title: "Alert", description: error.localizedDescription)
                             self.hud.dismiss()
-                        }
-                        else{
+                        } else {
                             self.insertUsertoDataBase(fname: fname, lname: lastname, lastname: "\(fname) \(lastname)", password: password, mobilenumber: mobilenumber, imageURL: "", email: email)
                             self.hud.dismiss()
                         }
