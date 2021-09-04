@@ -8,6 +8,7 @@
 
 import UIKit
 import JGProgressHUD
+import SideMenu
 
 class CategoryViewController: UIViewController {
     
@@ -22,25 +23,20 @@ class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         basicView.layer.cornerRadius =  basicView.bounds.size.height/4
         intermediateView.layer.cornerRadius =  intermediateView.bounds.size.height/4
         AdvanceView.layer.cornerRadius =  AdvanceView.bounds.size.height/4
         self.VideosApiCall()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     @IBAction func BasicBtnAction(_ sender: Any) {
         self.selectedType = 0
         self.performSegue(withIdentifier: "PlayerVC", sender: nil)
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vcc = storyboard.instantiateViewController(withIdentifier: "PlayerVC") as! intermVideoViewController
-//        if let basic = self.videos.basic{
-//            vcc.videos = basic
-//            vcc.thumbnail = 0
-//            vcc.selectedType = self.selectedType
-//            vcc.selectedVideo = IndexPath(row: 0, section: 0)
-//        }
-//        
-//        self.present(vcc, animated: true, completion: nil)
     }
     @IBAction func ItermediateBtnAction(_ sender: Any) {
         self.selectedType = 1
@@ -49,6 +45,11 @@ class CategoryViewController: UIViewController {
     @IBAction func AdvanceBtnAction(_ sender: Any) {
         self.selectedType = 2
         self.performSegue(withIdentifier: "PlayerVC", sender: nil)
+    }
+    
+    @IBAction func MenuBtnAction(_ sender: Any) {
+        let menu = storyboard!.instantiateViewController(withIdentifier: "RightMenu") as! SideMenuNavigationController
+        present(menu, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

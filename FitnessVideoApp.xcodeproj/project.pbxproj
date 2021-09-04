@@ -51,8 +51,13 @@
 		761E16F7265FE8E900031A5B /* DataBaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761E16E2265FE8E900031A5B /* DataBaseHelper.swift */; };
 		761E16F8265FE8E900031A5B /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761E16E3265FE8E900031A5B /* NetworkConnection.swift */; };
 		761E174B265FEA7C00031A5B /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761E174A265FEA7C00031A5B /* LoginModel.swift */; };
+		763212BA26E37BE0007DC5FA /* TestMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763212B926E37BE0007DC5FA /* TestMenuViewController.swift */; };
+		763212BE26E37FF0007DC5FA /* OptionMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763212BD26E37FF0007DC5FA /* OptionMenuViewController.swift */; };
+		763212C326E38487007DC5FA /* OptionMenuHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763212C226E38487007DC5FA /* OptionMenuHeaderTableViewCell.swift */; };
+		763212C626E384D2007DC5FA /* OptionItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763212C526E384D2007DC5FA /* OptionItemsTableViewCell.swift */; };
 		764455D52678A76300E25AE3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764455D42678A76300E25AE3 /* TabbarViewController.swift */; };
 		764455D82678AD5200E25AE3 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */; };
+		767C40BF26E244580067A382 /* Ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767C40BE26E244580067A382 /* Ipad.storyboard */; };
 		76CD51DB26C27B7F00EE64C4 /* DisclamerAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CD51DA26C27B7F00EE64C4 /* DisclamerAlertViewController.swift */; };
 		76F633802664CC6F00D8C7CA /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F6337F2664CC6F00D8C7CA /* FavoriteModel.swift */; };
 		76F81351266103BB007BF955 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F81350266103BB007BF955 /* VideoModel.swift */; };
@@ -126,8 +131,13 @@
 		761E16E2265FE8E900031A5B /* DataBaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseHelper.swift; sourceTree = "<group>"; };
 		761E16E3265FE8E900031A5B /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		761E174A265FEA7C00031A5B /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		763212B926E37BE0007DC5FA /* TestMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMenuViewController.swift; sourceTree = "<group>"; };
+		763212BD26E37FF0007DC5FA /* OptionMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMenuViewController.swift; sourceTree = "<group>"; };
+		763212C226E38487007DC5FA /* OptionMenuHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionMenuHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		763212C526E384D2007DC5FA /* OptionItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionItemsTableViewCell.swift; sourceTree = "<group>"; };
 		764455D42678A76300E25AE3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		767C40BE26E244580067A382 /* Ipad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ipad.storyboard; sourceTree = "<group>"; };
 		76CD51DA26C27B7F00EE64C4 /* DisclamerAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclamerAlertViewController.swift; sourceTree = "<group>"; };
 		76F6337F2664CC6F00D8C7CA /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		76F81350266103BB007BF955 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
@@ -260,6 +270,32 @@
 			path = HelperClasses;
 			sourceTree = "<group>";
 		};
+		763212BC26E37FE1007DC5FA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				763212BD26E37FF0007DC5FA /* OptionMenuViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		763212C126E38465007DC5FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				763212C226E38487007DC5FA /* OptionMenuHeaderTableViewCell.swift */,
+				763212C526E384D2007DC5FA /* OptionItemsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		767C40C426E2655B0067A382 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				763212C126E38465007DC5FA /* View */,
+				763212BC26E37FE1007DC5FA /* Controller */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
 		C302568D25F2319100278BBF /* tabbar_Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +350,7 @@
 				C376466225EE634B00BF484F /* ViewController */,
 				C376464E25EE621700BF484F /* AppDelegate.swift */,
 				C376465225EE621700BF484F /* Main.storyboard */,
+				767C40BE26E244580067A382 /* Ipad.storyboard */,
 				C376465525EE621900BF484F /* Assets.xcassets */,
 				C376465725EE621900BF484F /* LaunchScreen.storyboard */,
 				C376465A25EE621900BF484F /* Info.plist */,
@@ -325,6 +362,7 @@
 		C376466225EE634B00BF484F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				767C40C426E2655B0067A382 /* SideMenu */,
 				C302568E25F231A000278BBF /* NaviagationViews */,
 				C302568D25F2319100278BBF /* tabbar_Views */,
 				C376466025EE634100BF484F /* FirstPageViewController.swift */,
@@ -336,6 +374,7 @@
 				761376E32667850D003B8618 /* EditProfileViewController.swift */,
 				764455D72678AD5200E25AE3 /* PrivacyPolicyViewController.swift */,
 				76CD51DA26C27B7F00EE64C4 /* DisclamerAlertViewController.swift */,
+				763212B926E37BE0007DC5FA /* TestMenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -423,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				767C40BF26E244580067A382 /* Ipad.storyboard in Resources */,
 				C376465925EE621900BF484F /* LaunchScreen.storyboard in Resources */,
 				761E16B3265FE3A400031A5B /* GoogleService-Info.plist in Resources */,
 				C376465625EE621900BF484F /* Assets.xcassets in Resources */,
@@ -484,6 +524,7 @@
 				76FB99CE266F6A8500CE2ECA /* intermVideoViewController.swift in Sources */,
 				761E16F2265FE8E900031A5B /* Imagepicker.swift in Sources */,
 				761E1695265FD7A100031A5B /* Protocals.swift in Sources */,
+				763212C626E384D2007DC5FA /* OptionItemsTableViewCell.swift in Sources */,
 				761E16EA265FE8E900031A5B /* Global Variables.swift in Sources */,
 				C319075725F112800028709B /* IntermediateCollectionViewCell.swift in Sources */,
 				761E16F6265FE8E900031A5B /* NVActivityIndicatorViewable.swift in Sources */,
@@ -509,6 +550,7 @@
 				761E169F265FD7A100031A5B /* AppStoryBoard.swift in Sources */,
 				761E169A265FD7A100031A5B /* Extensions.swift in Sources */,
 				761E169D265FD7A100031A5B /* UISearchBar+Additions.swift in Sources */,
+				763212C326E38487007DC5FA /* OptionMenuHeaderTableViewCell.swift in Sources */,
 				761E16E9265FE8E900031A5B /* Globals.swift in Sources */,
 				761E174B265FEA7C00031A5B /* LoginModel.swift in Sources */,
 				761E16E5265FE8E900031A5B /* WebServiceDataParsingDelegate.swift in Sources */,
@@ -516,6 +558,7 @@
 				C376466125EE634100BF484F /* FirstPageViewController.swift in Sources */,
 				C371788125EFD16A0025B3AD /* FavCollectionViewCell.swift in Sources */,
 				761E1694265FD7A100031A5B /* UIView+Additions.swift in Sources */,
+				763212BE26E37FF0007DC5FA /* OptionMenuViewController.swift in Sources */,
 				761E169E265FD7A100031A5B /* Utility.swift in Sources */,
 				C3FFD37725EFBC0D008239A1 /* CategoryViewController.swift in Sources */,
 				761E16F0265FE8E900031A5B /* PopupHelper.swift in Sources */,
@@ -541,6 +584,7 @@
 				C36A18AD25F0FC32008C6596 /* CMPViewController.swift in Sources */,
 				761E1699265FD7A100031A5B /* CameraViewController.swift in Sources */,
 				761E16F5265FE8E900031A5B /* ViewControllerHelper.swift in Sources */,
+				763212BA26E37BE0007DC5FA /* TestMenuViewController.swift in Sources */,
 				C3ECD1D125EFADE200C45C75 /* HomeCollectionViewCell.swift in Sources */,
 				761E16F4265FE8E900031A5B /* AsyncUtil.swift in Sources */,
 				C319075525F1107D0028709B /* IndermediateCViewController.swift in Sources */,
@@ -699,11 +743,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Buzzware.FitnessVideoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -720,11 +764,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Buzzware.FitnessVideoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -40,17 +40,12 @@ class FirstPageViewController: UIViewController {
         self.changeViewController(identifier: "selectDesignViewController")
     }
     @IBAction func CreateAccountBtnAction(_ sender: Any) {
+        //        self.performSegue(withIdentifier: "DisclamerAlertSegue", sender: nil)
+        self.changeViewController(identifier: "CreateAccountViewController")
+    }
+    @IBAction func DisclaimerBtnAction(_ sender: Any) {
         self.performSegue(withIdentifier: "DisclamerAlertSegue", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DisclamerAlertSegue"{
-            if let disclamerAlertVC = segue.destination as? DisclamerAlertViewController {
-                disclamerAlertVC.delegate = self
-            }
-        }
-    }
-    
 }
 
 //MARK:- OPTION MENU SETUP EXTENSION
@@ -93,15 +88,22 @@ extension FirstPageViewController{
         //changeViewController(identifier: "New Job")
     }
     @objc func invoice_Btn() {
-        changeViewController(identifier: "FeedbackAndContactUs")
+        contactUs(identifier: "FeedbackAndContactUs", title: "Contact Us")
     }
     @objc func task_Btn() {
-        changeViewController(identifier: "FeedbackAndContactUs")
+        contactUs(identifier: "FeedbackAndContactUs", title: "Feedback")
     }
     
     func changeViewController(identifier:String) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: identifier)
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
+    func contactUs(identifier:String,title:String) {
+        let storyBoard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: identifier) as! FeedbackViewController
+        newViewController.selectedTitle = title
         self.present(newViewController, animated: true, completion: nil)
     }
     

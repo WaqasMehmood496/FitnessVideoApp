@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseStorage
 import JGProgressHUD
+import SideMenu
 
 class favouriteViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
@@ -30,12 +31,16 @@ class favouriteViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         ref = Database.database().reference()
         self.collectionViewSetup()
     }
     
+
+    
     override func viewWillAppear(_ animated: Bool) {
         self.getFavoritesFromFirebase()
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,6 +50,11 @@ class favouriteViewController: UIViewController,UICollectionViewDelegate,UIColle
                 playerVC.isFavorite = true
             }
         }
+    }
+    
+    @IBAction func MenuBtnAction(_ sender: Any) {
+        let menu = storyboard!.instantiateViewController(withIdentifier: "RightMenu") as! SideMenuNavigationController
+        present(menu, animated: true, completion: nil)
     }
 }
 

@@ -11,12 +11,15 @@ import JGProgressHUD
 import AVKit
 import SDWebImage
 import Firebase
+import SideMenu
 
 class homeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     //MARK: IBOUTLET'S
     @IBOutlet weak var basicCollectionView: UICollectionView!
     @IBOutlet weak var interCV: UICollectionView!
     @IBOutlet weak var adv_CollectionView: UICollectionView!
+    @IBOutlet weak var SideMenuBtn: UIBarButtonItem!
+    
     //MARK: VARIABLE'S
     var dataDic = [String:Any]()
     var videos = VideoModel()
@@ -34,9 +37,18 @@ class homeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.setupSideMenu()
+        self.tabBarController?.tabBar.isHidden = false
+//        SideMenuBtn.target = revealViewController()
+//        SideMenuBtn.action = #selector(revealViewController()?.revealSideMenu)
+        
         ref = Database.database().reference()
         self.navigationItem.title = "Home"
         self.VideosApiCall()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,14 +74,13 @@ class homeViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
     }
     @IBAction func MenuBtnAction(_ sender: Any) {
-        self.add_Option_View()
-        backView.tag = 1122
-        self.view.addSubview(backView)
+        let menu = storyboard!.instantiateViewController(withIdentifier: "RightMenu") as! SideMenuNavigationController
+        present(menu, animated: true, completion: nil)
     }
 }
 
 //MARK:- FUNCTIONS EXTENSION
-extension homeViewController{
+extension homeViewController {
     
     // GETT ALL VIDEOS FROM SERVER
     func VideosApiCall() {

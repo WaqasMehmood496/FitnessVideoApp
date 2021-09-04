@@ -18,8 +18,9 @@ class LoginModel: Codable {
     var mobile_number:String!
     var password:String!
     var weight:String!
+    var image:String!
     
-    init(age: String? = nil,email:String? = nil,f_name:String? = nil,full_name:String? = nil,gender:String? = nil,  height: String? = nil,l_name:String? = nil,mobile_number:String? = nil,password:String? = nil,weight:String? = nil) {
+    init(age: String? = nil,email:String? = nil,f_name:String? = nil,full_name:String? = nil,gender:String? = nil,  height: String? = nil,l_name:String? = nil,mobile_number:String? = nil,password:String? = nil,weight:String? = nil,image:String? = nil) {
         self.age = age
         self.email = email
         self.f_name = f_name
@@ -30,6 +31,7 @@ class LoginModel: Codable {
         self.mobile_number = mobile_number
         self.password = password
         self.weight = weight
+        self.image = image
     }
     
     init?(dic:NSDictionary) {
@@ -44,7 +46,7 @@ class LoginModel: Codable {
         let mobile_number = (dic as AnyObject).value(forKey: Constant.mobile_number) as! String
         let password = (dic as AnyObject).value(forKey: Constant.password) as! String
         let weight = (dic as AnyObject).value(forKey: Constant.weight) as? String
-        
+        let image = (dic as AnyObject).value(forKey: Constant.image) as? String
         
         self.age = age
         self.email = email
@@ -56,5 +58,6 @@ class LoginModel: Codable {
         self.mobile_number = mobile_number
         self.password = password
         self.weight = weight
+        self.image = image
     }
 }

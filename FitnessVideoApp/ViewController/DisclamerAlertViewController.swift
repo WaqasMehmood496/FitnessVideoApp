@@ -9,9 +9,6 @@
 import UIKit
 
 class DisclamerAlertViewController: UIViewController {
-
-    
-    var delegate: FirstPageViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +17,6 @@ class DisclamerAlertViewController: UIViewController {
 
     @IBAction func CancelBtnAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func ProceedBtnAction(_ sender: Any) {
-        self.dismiss(animated: true) {
-            self.delegate?.createNewAccountDelegate()
-        }
     }
     
 }

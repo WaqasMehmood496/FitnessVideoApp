@@ -45,7 +45,7 @@ class CreateAccountViewController: UIViewController {
             if isUnderAgeSelected {
                 self.SignUpUser()
             }else{
-                PopupHelper.alertWithOk(title: "Alert", message: "Check the age condition, if you are 18 years or older", controler: self)
+                PopupHelper.alertWithOk(title: "Alert", message: "Please get your parent/guardian’s permission to download this app.", controler: self)
             }
             
         }else{
@@ -124,31 +124,40 @@ extension CreateAccountViewController{
         let password = PasswordTF.text!
         let email = EmailTF.text!
         let mobilenumber = MoileNumberTF.text!
-        
-        hud.textLabel.text = "Loading"
-        hud.show(in: self.view)
-        if email != "" && fname != "" && lastname != "" && mobilenumber != ""
-        {
-            
-            mAuth.createUser(withEmail: email, password: password) { result, err in
-                if let error = err {
-                    print(error)
-                    self.hud.dismiss()
-                    self.ErrorAlertMessage(title: "Alert", description: "Email Already Exist")
-                } else {
-                    self.mAuth.currentUser?.sendEmailVerification(completion: { err in
-                        if let error = err{
+        if Connectivity.isConnectedToNetwork() {
+            if isTermsSelected && isUnderAgeSelected {
+                hud.textLabel.text = "Loading"
+                hud.show(in: self.view)
+                if email != "" && email != " " && fname != "" && fname != " " && lastname != "" && lastname != " " && mobilenumber != "" && mobilenumber != " " {
+                    mAuth.createUser(withEmail: email, password: password) { result, err in
+                        if let error = err {
                             print(error)
+                            self.hud.dismiss()
                             self.ErrorAlertMessage(title: "Alert", description: error.localizedDescription)
-                            self.hud.dismiss()
                         } else {
-                            self.insertUsertoDataBase(fname: fname, lname: lastname, lastname: "\(fname) \(lastname)", password: password, mobilenumber: mobilenumber, imageURL: "", email: email)
-                            self.hud.dismiss()
-                        }
-                    })//End send email varification complition
-                }//End error statement
-            }//End auth create user complition
-        }//End textfields null verification
+                            self.mAuth.currentUser?.sendEmailVerification(completion: { err in
+                                if let error = err{
+                                    print(error)
+                                    self.ErrorAlertMessage(title: "Alert", description: error.localizedDescription)
+                                    self.hud.dismiss()
+                                } else {
+                                    self.insertUsertoDataBase(fname: fname, lname: lastname, lastname: "\(fname) \(lastname)", password: password, mobilenumber: mobilenumber, imageURL: "", email: email)
+                                    self.hud.dismiss()
+                                }
+                            })//End send email varification complition
+                        }//End error statement
+                    }//End auth create user complition
+                } else {
+                    hud.dismiss()
+                    PopupHelper.showAlertControllerWithError( forErrorMessage: "Please fill all field", forViewController: self )
+                    
+                }//End textfields null verification
+            } else {
+                PopupHelper.showAlertControllerWithError( forErrorMessage: "Please check terms and condition and under 18 condition", forViewController: self )
+            }
+        } else {
+            PopupHelper.showAlertControllerWithError( forErrorMessage: "Internet is unavailable please check your connection", forViewController: self )
+        }
     }//End sign up user function
     
     func insertUsertoDataBase(fname:String,lname:String,lastname:String,password:String,mobilenumber:String,imageURL:String,email:String){
@@ -165,7 +174,8 @@ extension CreateAccountViewController{
             "l_name":lastname,
             "mobile_number":"",
             "password":password,
-            "weight":""
+            "weight":"",
+            "image":"Null"
         ])
         
         let currentuser = LoginModel(age: "", email: email, f_name: fname, full_name: "\(fname) \(lastname)", gender: "", height: "", l_name: lastname, mobile_number: mobilenumber, password: password, weight: "")

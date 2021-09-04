@@ -16,18 +16,23 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var EmailTF: UITextField!
     @IBOutlet weak var SubjectTF: UITextField!
     @IBOutlet weak var DetailTV: UITextView!
+    @IBOutlet weak var TitleLabel: UILabel!
     
     var dataDic = [String:Any]()
+    var selectedTitle = String()
+    
     //MARK: VARIABLE'S
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
+        self.TitleLabel.text = selectedTitle
     }
     //MARK: IBACTION'S
     @IBAction func SendBtnAciton(_ sender: Any) {
         self.CallingApi()
     }
     @IBAction func BackBtnAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func CallingApi() {

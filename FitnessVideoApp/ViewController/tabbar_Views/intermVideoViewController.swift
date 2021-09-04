@@ -50,8 +50,11 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
         self.getFavoritesFromFirebase()
     }
     
+    
     override func viewDidDisappear(_ animated: Bool) {
         playlist.pause()
+        playlist.removeObserver(self, forKeyPath: "status")
+        playlist.removeAllItems()
     }
     override func viewDidAppear(_ animated: Bool) {
         playlist.play()
@@ -137,8 +140,10 @@ extension intermVideoViewController{
         addChild(playerViewController)
         playlist.play()
         playlist.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        
         playlist.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: .AVPlayerItemDidPlayToEndTime, object: playlist.currentItem)
+//
+//        NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: .AVPlayerItemDidPlayToEndTime, object: playlist.currentItem)
         
         
     }
