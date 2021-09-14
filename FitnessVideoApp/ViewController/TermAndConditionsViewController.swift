@@ -17,7 +17,7 @@ class TermAndConditionsViewController: UIViewController {
     }
     
     @IBAction func BackBtnAction(_ sender: Any) {
-//        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
 }

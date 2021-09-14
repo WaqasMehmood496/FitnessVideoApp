@@ -58,18 +58,19 @@ class CreateAccountViewController: UIViewController {
         if isTermsSelected{
             self.isTermsSelected = false
             self.AgreeTermsAndCondition.image = UIImage(named: "")
-        }else{
+        } else {
             self.isTermsSelected = true
             self.AgreeTermsAndCondition.image = #imageLiteral(resourceName: "icons8-checked-checkbox-50")
+            self.performSegue(withIdentifier: "ToTermsAndAgrement", sender: nil)
         }
     }
     
     
     @objc func underAgeImageGuesture(_ sender: UITapGestureRecognizer){
-        if isUnderAgeSelected{
+        if isUnderAgeSelected {
             self.isUnderAgeSelected = false
             self.UnderAgeImage.image = UIImage(named: "")
-        }else{
+        } else {
             self.isUnderAgeSelected = true
             self.UnderAgeImage.image = #imageLiteral(resourceName: "icons8-checked-checkbox-50")
         }

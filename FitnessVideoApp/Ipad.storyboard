@@ -213,7 +213,7 @@
             <objects>
                 <viewController id="SVJ-wh-bFs" customClass="homeViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="doo-TD-tsb">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1012"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-ip-fyT">
@@ -1989,7 +1989,7 @@
             <objects>
                 <viewController storyboardIdentifier="PlayerVC" hidesBottomBarWhenPushed="YES" id="Ztm-ee-kFz" customClass="intermVideoViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFm-EW-PL3">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1062"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mfp-yh-jmi">
@@ -2717,7 +2717,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController id="0sM-WV-oF1" customClass="OptionMenuViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Fk-gl-UcA">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="939.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Puh-s3-c2s">
@@ -3666,7 +3666,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController id="iVw-pd-1vB" customClass="profileViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wgK-Z1-cYV">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1012"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTG-7h-o8G">
@@ -4073,7 +4073,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController id="jd9-dl-VeL" customClass="CategoryViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ztg-5d-noq">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1012"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ue1-an-w9f">
@@ -4486,7 +4486,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController id="9Kd-Ev-TiC" customClass="favouriteViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cAi-hS-xV6">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1012"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MtO-vV-HCP">
@@ -4712,7 +4712,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="a39-l6-C6h" customClass="EditProfileViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NVR-VM-Pzo">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1012"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvE-jv-bj8">

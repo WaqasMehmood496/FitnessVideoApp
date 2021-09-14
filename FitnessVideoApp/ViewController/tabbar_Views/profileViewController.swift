@@ -253,12 +253,6 @@ extension profileViewController {
 }
 
 
-
-
-
-
-
-
 //MARK:- WEWBSERVICE EXTENSION
 extension UIView {
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {

@@ -903,6 +903,7 @@
                         <outlet property="MoileNumberTF" destination="PeB-Hf-03r" id="EPx-PR-6jz"/>
                         <outlet property="PasswordTF" destination="335-Ow-cVD" id="k25-3F-UHw"/>
                         <outlet property="UnderAgeImage" destination="XrR-ZM-SeP" id="Zzw-Tt-umP"/>
+                        <segue destination="shG-Zn-bZD" kind="show" identifier="ToTermsAndAgrement" id="Bj7-ol-01u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9O9-QY-oaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1009,7 +1010,7 @@
             <objects>
                 <viewController id="b8O-ql-5D9" customClass="homeViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4rV-w1-WJZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elg-6z-vhf">
@@ -1021,7 +1022,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfp-eu-S9I">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gymclips Home PIc" translatesAutoresizingMaskIntoConstraints="NO" id="7ev-qD-bYK">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="7ev-qD-bYK">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
                                                     </imageView>
                                                 </subviews>
@@ -1443,7 +1444,7 @@
             <objects>
                 <viewController id="Bzl-Kk-die" customClass="profileViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HUw-0L-Dqw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feq-go-Mun">
@@ -1452,7 +1453,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PyP-T5-EeJ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="254"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="34" translatesAutoresizingMaskIntoConstraints="NO" id="dmd-x4-nhu">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="dmd-x4-nhu">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="254"/>
                                             </imageView>
                                         </subviews>
@@ -3333,7 +3334,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController storyboardIdentifier="PlayerVC" hidesBottomBarWhenPushed="YES" id="0fx-dF-b5v" customClass="intermVideoViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LfU-jH-h9y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6Z-eE-XmG">
@@ -4085,7 +4086,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController id="V9R-gd-0HG" customClass="OptionMenuViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="npv-G8-TFV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bx2-RO-AWr">
@@ -4230,7 +4231,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController id="yi0-6x-B9S" customClass="CategoryViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFo-66-BfM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OE2-xV-VBU">
@@ -4643,7 +4644,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController id="VeG-lZ-A3Z" customClass="favouriteViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eEn-TL-V68">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aMm-SP-3yk">
@@ -4869,7 +4870,7 @@ If you think someone has gained access to your account, please reach out to supp
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="S1a-km-TKx" customClass="EditProfileViewController" customModule="FitnessVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RPT-d9-7mO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QU-FJ-rfk">
@@ -5202,8 +5203,8 @@ If you think someone has gained access to your account, please reach out to supp
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="FH9-7u-hXq"/>
-        <segue reference="vJp-90-nuw"/>
+        <segue reference="0n3-tc-Y8p"/>
+        <segue reference="ffZ-aL-Icq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="13" width="38" height="30"/>
@@ -5211,14 +5212,13 @@ If you think someone has gained access to your account, please reach out to supp
         <image name="2" width="90" height="90"/>
         <image name="22" width="14" height="14"/>
         <image name="33" width="181" height="180"/>
-        <image name="34" width="747" height="505"/>
         <image name="35" width="30" height="30"/>
         <image name="4" width="48" height="48"/>
         <image name="5" width="48" height="48"/>
         <image name="6" width="280" height="180"/>
         <image name="7" width="280" height="180"/>
-        <image name="Gymclips Home PIc" width="640" height="480"/>
         <image name="Screenshot_20210808-221554_Office Mobile" width="1080" height="1066"/>
+        <image name="Wallpaper" width="338" height="408"/>
         <image name="aa1" width="400" height="226"/>
         <image name="aa4" width="400" height="226"/>
         <image name="aa6" width="400" height="226"/>
