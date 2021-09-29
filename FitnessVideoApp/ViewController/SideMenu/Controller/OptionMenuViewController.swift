@@ -48,6 +48,10 @@ extension OptionMenuViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.NameLabel.text = name
             }
             
+            if let image = CommonHelper.getCachedUserData()?.image {
+                cell.UserImage.sd_setImage(with: URL(string: image), placeholderImage: #imageLiteral(resourceName: "16"))
+            }
+            
             if let email = CommonHelper.getCachedUserData()?.email {
                 cell.EmailLabel.text = email
             }

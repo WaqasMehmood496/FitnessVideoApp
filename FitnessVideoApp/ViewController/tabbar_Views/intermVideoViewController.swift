@@ -49,20 +49,11 @@ class intermVideoViewController: UIViewController,UICollectionViewDataSource,UIC
         ref = Database.database().reference()
         self.getFavoritesFromFirebase()
     }
-    
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        playlist.pause()
-        playlist.removeObserver(self, forKeyPath: "status")
-        playlist.removeAllItems()
-    }
+
     override func viewDidAppear(_ animated: Bool) {
         playlist.play()
     }
-    
-    //    @IBAction func BackButtonAction(_ sender: Any) {
-    //        self.dismiss(animated: true, completion: nil)
-    //    }
+
 }
 
 
@@ -131,7 +122,6 @@ extension intermVideoViewController{
     func player(items:[AVPlayerItem]) {
         playlist = AVQueuePlayer(items: items)
         playlist.rate = 1
-        
         playerViewController.player = playlist
         playerViewController.delegate = self
         playerViewController.view.frame = self.containerView.frame
@@ -139,59 +129,10 @@ extension intermVideoViewController{
         self.containerView.addSubview(playerViewController.view)
         addChild(playerViewController)
         playlist.play()
-        playlist.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
-        
-        playlist.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector:#selector(self.playerDidFinishPlaying(note:)),name: .AVPlayerItemDidPlayToEndTime, object: playlist.currentItem)
-        
         
     }
     
-    //THIS METHODS DETEACT THE TOTAL TIME OF VIDEO AND START MUTE FUNCTION
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if (keyPath == "rate") {
-            print(playlist.rate)
-        }
-        if (keyPath == "status") {
-            print(playlist.status)
-            if let duration = playlist.currentItem?.asset.duration {
-                let seconds = CMTimeGetSeconds(duration)
-                self.totalVideoDuration = seconds
-                print("Seconds :: \(seconds)")
-                self.addTheardThatCheckTimeOfMutingVideo()
-            }
-        }
-    }
-    
-    @objc func playerDidFinishPlaying(note: NSNotification){
-        print("Video Finished")
-        self.playlist.isMuted = false
-    }
-    
-    //THIS METHOD TRACK THE VIDEO TIME AND WHEN ITS NEAR TO END IT WILL MUTE THE AUDIO BEFORE 5 SECONDS
-    func addTheardThatCheckTimeOfMutingVideo() {
-        // Invoke callback every second
-        if totalVideoDuration > 0.0 {
-            let interval = CMTime(seconds:totalVideoDuration - 5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-            // Queue on which to invoke the callback
-            let mainQueue = DispatchQueue.main
-            // Keep the reference to remove
-            playlist.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue) { time in
-                print(time)
-                if let duration = self.playlist.currentItem?.asset.duration {
-                    let seconds = CMTimeGetSeconds(duration)
-                    self.totalVideoDuration = seconds
-                    if time.seconds >= self.totalVideoDuration - 10{
-                        self.playlist.isMuted = true
-                    }else{
-                        self.playlist.isMuted = false
-                    }
-                }
-            }
-        }
-    }
-    
+ 
     // REMOVE VIDEO FROM CURRENT PLAYER
     func removePlayer(url:String) {
         if let url = URL.init(string: url) {

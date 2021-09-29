@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1617,12 +1618,17 @@
                                             <constraint firstAttribute="trailing" secondItem="Q7L-WI-fC7" secondAttribute="trailing" constant="16" id="xfI-dl-Dlf"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="33" translatesAutoresizingMaskIntoConstraints="NO" id="jIM-yo-OTg">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="16" translatesAutoresizingMaskIntoConstraints="NO" id="jIM-yo-OTg">
                                         <rect key="frame" x="43" y="177.5" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="UiF-CA-91B"/>
                                             <constraint firstAttribute="width" constant="80" id="gyK-hW-gDX"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3774,7 +3780,7 @@ If you think someone has gained access to your account, please reach out to supp
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermsCell" id="rGw-nO-lAJ" customClass="TermAndConditionCell" customModule="FitnessVideoApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="1086.5"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="1086.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rGw-nO-lAJ" id="R9S-AK-a3L">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="1086.5"/>
@@ -4090,11 +4096,11 @@ If you think someone has gained access to your account, please reach out to supp
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bx2-RO-AWr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                                <rect key="frame" x="0.0" y="-30" width="414" height="816"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LogoCell" id="VMO-t0-aij" customClass="OptionMenuHeaderTableViewCell" customModule="FitnessVideoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="240"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VMO-t0-aij" id="ZCl-Vg-gH4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
@@ -4103,7 +4109,7 @@ If you think someone has gained access to your account, please reach out to supp
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WgI-lZ-wuD">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screenshot_20210808-221554_Office Mobile" translatesAutoresizingMaskIntoConstraints="NO" id="KVb-fJ-U10">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="16" translatesAutoresizingMaskIntoConstraints="NO" id="KVb-fJ-U10">
                                                             <rect key="frame" x="16" y="78" width="100" height="100"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="100" id="jbz-5N-2HN"/>
@@ -4111,7 +4117,7 @@ If you think someone has gained access to your account, please reach out to supp
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="60"/>
+                                                                    <real key="value" value="50"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
@@ -4155,7 +4161,7 @@ If you think someone has gained access to your account, please reach out to supp
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemsCell" id="8tr-oQ-MCV" customClass="OptionItemsTableViewCell" customModule="FitnessVideoApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="268" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="284.5" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8tr-oQ-MCV" id="eSU-fq-mVd">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -4212,7 +4218,7 @@ If you think someone has gained access to your account, please reach out to supp
                         <color key="backgroundColor" name="Dark Background Color"/>
                         <constraints>
                             <constraint firstItem="xpr-ui-hl8" firstAttribute="trailing" secondItem="Bx2-RO-AWr" secondAttribute="trailing" id="948-zF-cL5"/>
-                            <constraint firstItem="Bx2-RO-AWr" firstAttribute="top" secondItem="xpr-ui-hl8" secondAttribute="top" id="9es-em-3Nt"/>
+                            <constraint firstItem="Bx2-RO-AWr" firstAttribute="top" secondItem="npv-G8-TFV" secondAttribute="top" constant="-30" id="9es-em-3Nt"/>
                             <constraint firstItem="Bx2-RO-AWr" firstAttribute="leading" secondItem="xpr-ui-hl8" secondAttribute="leading" id="FdN-OJ-WU5"/>
                             <constraint firstItem="xpr-ui-hl8" firstAttribute="bottom" secondItem="Bx2-RO-AWr" secondAttribute="bottom" id="tmM-et-zQ7"/>
                         </constraints>
@@ -5203,21 +5209,20 @@ If you think someone has gained access to your account, please reach out to supp
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="0n3-tc-Y8p"/>
+        <segue reference="FH9-7u-hXq"/>
         <segue reference="ffZ-aL-Icq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="13" width="38" height="30"/>
+        <image name="16" width="670" height="350"/>
         <image name="17" width="40" height="40"/>
         <image name="2" width="90" height="90"/>
         <image name="22" width="14" height="14"/>
-        <image name="33" width="181" height="180"/>
         <image name="35" width="30" height="30"/>
         <image name="4" width="48" height="48"/>
         <image name="5" width="48" height="48"/>
         <image name="6" width="280" height="180"/>
         <image name="7" width="280" height="180"/>
-        <image name="Screenshot_20210808-221554_Office Mobile" width="1080" height="1066"/>
         <image name="Wallpaper" width="338" height="408"/>
         <image name="aa1" width="400" height="226"/>
         <image name="aa4" width="400" height="226"/>
